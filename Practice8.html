@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>TOEIC Set 2 — Câu 1–30</title>
+<title>TOEIC Practice 8 — Câu 131–146</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -285,6 +285,42 @@ header h1 {
   display: inline-block;
   min-width: 60px;
   text-align: center;
+}
+
+/* Part 6 Passage Box Styling */
+.passage-box {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 16px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text);
+  box-shadow: inset 0 2px 4px var(--shadow);
+}
+.passage-box strong {
+  color: var(--text);
+}
+.passage-box .q-blank {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  min-width: unset;
+  margin: 0 4px;
+  text-align: center;
+  transition: var(--transition);
+}
+.passage-box .q-blank.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.15);
 }
 
 .options-list {
@@ -705,7 +741,7 @@ input:checked + .theme-slider:before {
     </a>
     <a href="Practice5.html" class="drawer-item" id="menu_p5">
       <span>Practice 5</span>
-      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 1–30</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 101–130</span>
     </a>
     <a href="Practice6.html" class="drawer-item" id="menu_p6">
       <span>Practice 6</span>
@@ -736,9 +772,9 @@ input:checked + .theme-slider:before {
     <button class="menu-btn" onclick="toggleDrawer(true)">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
-    <h1 id="headerTitle">TOEIC Practice 1</h1>
+    <h1 id="headerTitle">TOEIC Practice 8</h1>
   </div>
-  <span class="score-badge" id="scoreBadge">0 / 30</span>
+  <span class="score-badge" id="scoreBadge">0 / 16</span>
 </header>
 
 <div class="progress-container">
@@ -750,7 +786,7 @@ input:checked + .theme-slider:before {
 <div class="container">
   <div id="quizView" class="card">
     <div class="q-badge-row">
-      <span class="q-badge" id="qBadge">Câu 1</span>
+      <span class="q-badge" id="qBadge">Câu 131</span>
       <span class="status-badge" id="statusBadge">✓ Chính xác</span>
     </div>
     
@@ -777,14 +813,14 @@ input:checked + .theme-slider:before {
         </defs>
       </svg>
       <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;">
-        <span id="resultScore" style="font-size: 26px; font-weight: 700; color: var(--text);">0/30</span>
+        <span id="resultScore" style="font-size: 26px; font-weight: 700; color: var(--text);">0/16</span>
         <span id="resultPercent" style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 4px;">0%</span>
       </div>
     </div>
 
     <div class="result-stats-grid">
       <div class="result-stat-box">
-        <div class="result-stat-num" id="statTotal" style="color: var(--primary);">30</div>
+        <div class="result-stat-num" id="statTotal" style="color: var(--primary);">16</div>
         <div class="result-stat-lbl">Tổng số</div>
       </div>
       <div class="result-stat-box">
@@ -812,7 +848,7 @@ input:checked + .theme-slider:before {
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
     Trước
   </button>
-  <div class="nav-info" id="navInfo">Câu 1 / 30</div>
+  <div class="nav-info" id="navInfo">Câu 1 / 16</div>
   <button class="btn-nav" id="nextBtn" onclick="navigate(1)">
     Tiếp
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -821,37 +857,255 @@ input:checked + .theme-slider:before {
 </div>
 
 <script>
+// RAW DATA POOL & CODE ENGINE HERE
 const QUESTIONS_RAW = [
-  { n:1, text:"When she held her last meeting, Ms. Toba _____ her sales staff to perform even better next quarter.", opts:["encourage","is encouraging","encouraged","was encouraged"], ans:2, exp:"Dấu hiệu quá khứ đơn: 'When she held her last meeting'. Chủ ngữ 'Ms. Toba' chủ động khuyến khích → 'encouraged'. (A) hiện tại; (B) hiện tại tiếp diễn; (D) bị động — sai vì Ms. Toba là người thực hiện hành động." },
-  { n:2, text:"All staff have been informed _____ the proposed partnership with ERI Finance.", opts:["for","about","to","at"], ans:1, exp:"Collocation cố định: 'inform someone ABOUT something' = thông báo về điều gì. (A)(C)(D) không kết hợp được với 'informed' trong cấu trúc này." },
-  { n:3, text:"On Friday, Mr. Nakamura will discuss _____ ideas for supporting busy quarters.", opts:["his","him","himself","he"], ans:0, exp:"Cần tính từ sở hữu trước danh từ 'ideas'. Mr. Nakamura (nam, ngôi 3 số ít) → 'his'. (B) tân ngữ; (C) phản thân; (D) chủ ngữ." },
-  { n:4, text:"The Forestry Commission was created to _____ the state's natural resources and wildlife.", opts:["allow","manage","succeed","finish"], ans:1, exp:"'Manage' (quản lý) phù hợp nhất với nhiệm vụ của ủy ban nhà nước về tài nguyên thiên nhiên. (A)(C)(D) không hợp nghĩa với ngữ cảnh." },
-  { n:5, text:"By following established guidelines, construction workers will be able to complete their tasks _____.", opts:["safety","safe","safeness","safely"], ans:3, exp:"Cần trạng từ bổ nghĩa cho động từ 'complete'. 'Safely' (một cách an toàn) có đuôi -ly. (A) danh từ; (B) tính từ; (C) danh từ không phổ biến." },
-  { n:6, text:"With her numerous credentials, Dr. Kwan is highly _____ to teach medieval history at Mation University.", opts:["arranged","ready","available","qualified"], ans:3, exp:"'Highly qualified' = có trình độ cao — cụm phổ biến trong học thuật/tuyển dụng. Người có nhiều bằng cấp thì 'qualified'. (A)(B)(C) không diễn đạt năng lực chuyên môn." },
-  { n:7, text:"_____ at the annual technology conference is mandatory for all engineers at the Treemont Corporation.", opts:["Attendance","Attend","Attends","Attended"], ans:0, exp:"Cần danh từ làm chủ ngữ đầu câu trước 'is mandatory'. 'Attendance' (sự tham dự) là danh từ đúng. (B)(C)(D) là dạng động từ." },
-  { n:8, text:"The café _____ features poets, folk singers, and drama groups on its stage.", opts:["tightly","occasionally","vaguely","realistically"], ans:1, exp:"'Occasionally' (thỉnh thoảng) phù hợp — quán cà phê định kỳ tổ chức biểu diễn không thường xuyên. (A)(C)(D) không phù hợp về nghĩa/tần suất." },
-  { n:9, text:"Before the seminar began, attendees were assured _____ all scheduled presenters would appear.", opts:["who","around","that","therefore"], ans:2, exp:"Cấu trúc: 'assure someone THAT + mệnh đề'. 'That' là liên từ bổ ngữ bắt buộc. (A) đại từ quan hệ; (B) giới từ; (D) trạng từ liên kết." },
-  { n:10, text:"Forever Pet has been a leader in bringing new products, _____ Fun Bone and Chew Right, to the market.", opts:["however","furthermore","as if","such as"], ans:3, exp:"'Such as' = chẳng hạn như — dùng để đưa ví dụ cụ thể. 'Fun Bone và Chew Right' là ví dụ cho 'new products'. (A) tương phản; (B) thêm thông tin; (C) giả định." },
-  { n:11, text:"Ms. Turner is in charge of _____ the organization of records in the human services department.", opts:["improve","improved","improving","improvement"], ans:2, exp:"Cấu trúc: 'in charge of + V-ing' — sau giới từ 'of' phải dùng gerund. 'Improving' đúng. (A) động từ nguyên thể; (B) V-ed; (D) danh từ không tạo nghĩa khi ghép với 'the organization'." },
-  { n:12, text:"Shefton Bank clients always receive an e-mail or text _____ following any change to their account password.", opts:["issue","alert","claim","member"], ans:1, exp:"'Alert' (cảnh báo) phù hợp — 'a text alert' = tin nhắn cảnh báo là cụm phổ biến trong dịch vụ ngân hàng. (A)(C)(D) không hợp ngữ cảnh." },
-  { n:13, text:"A drop in consumer demand has led to a _____ decrease in the production of large pickup trucks.", opts:["remark","remarked","remarking","remarkable"], ans:3, exp:"Cần tính từ bổ nghĩa cho danh từ 'decrease' sau mạo từ 'a'. 'Remarkable decrease' = sự giảm đáng kể. (A) danh từ/động từ; (B)(C) dạng động từ." },
-  { n:14, text:"After coating the potatoes in flour and spices, chefs should place them _____ into the deep fryer.", opts:["rarely","honestly","doubtfully","directly"], ans:3, exp:"'Directly' (thẳng vào, ngay lập tức) phù hợp quy trình nấu ăn — thả trực tiếp vào chảo sau khi tẩm bột. (A)(B)(C) vô nghĩa trong ngữ cảnh này." },
-  { n:15, text:"Several banks have released applications that allow _____ customers to pay bills easily by phone.", opts:["their","they","them","themselves"], ans:0, exp:"Cần tính từ sở hữu trước danh từ 'customers'. 'Their customers' = khách hàng của họ (các ngân hàng). (B) chủ ngữ; (C) tân ngữ; (D) phản thân — đều không đứng trực tiếp trước danh từ." },
-  { n:16, text:"The personnel department will _____ only those applicants who have five or more years of experience for the position.", opts:["participate","consider","grant","make"], ans:1, exp:"'Consider applicants' (xem xét ứng viên) là từ chuẩn trong tuyển dụng. (A) không có tân ngữ trực tiếp; (C)(D) không hợp nghĩa trong ngữ cảnh tuyển dụng." },
-  { n:17, text:"Employees of Belfore Electronics Ltd are _____ involved in community-assistance programs.", opts:["active","actively","activate","activity"], ans:1, exp:"Cần trạng từ bổ nghĩa cho 'involved'. 'Actively involved' = tham gia tích cực — colocation cực phổ biến. (A) tính từ; (C) động từ; (D) danh từ." },
-  { n:18, text:"The executives at Macalter Equipment decided they would not _____ the contract without major changes.", opts:["renew","consume","identify","resemble"], ans:0, exp:"'Renew a contract' (gia hạn hợp đồng) là cụm phổ biến trong kinh doanh. (B)(C)(D) không đi tự nhiên với 'contract' trong ngữ cảnh này." },
-  { n:19, text:"Wet suits are made with a _____ layer of rubber that traps heat and keeps divers warm.", opts:["protect","protects","protective","protectively"], ans:2, exp:"Cần tính từ bổ nghĩa cho danh từ 'layer' sau mạo từ 'a'. 'Protective layer' = lớp bảo vệ. (A)(B) động từ; (D) trạng từ." },
-  { n:20, text:"Newcamp Services managers will meet to discuss the proposed _____ of three smaller branches into one large branch.", opts:["security","bracket","connector","merger"], ans:3, exp:"'Merger' (sự sáp nhập) mô tả chính xác việc gộp nhiều đơn vị lại — từ chuẩn trong kinh doanh. (A)(B)(C) không hợp ngữ cảnh sáp nhập công ty." },
-  { n:21, text:"At Yarzen Technology, client's records are _____ and can only be accessed by a small group of senior managers.", opts:["confide","confidential","confidentially","confidentiality"], ans:1, exp:"Sau 'are' cần tính từ làm vị ngữ. 'Confidential' (bí mật, mật) là tính từ đúng. (A) động từ; (C) trạng từ; (D) danh từ." },
-  { n:22, text:"The featured panel at the NHJ Medical Conference will discuss recent _____ in online health-care services.", opts:["memories","varieties","trends","rehearsals"], ans:2, exp:"'Trends' (xu hướng) phù hợp khi nói về sự phát triển/thay đổi trong y tế số. (A)(D) sai ngữ cảnh hoàn toàn; (B) không diễn đạt được sự thay đổi theo thời gian." },
-  { n:23, text:"All of Millville's restaurants _____ several times a year by the city health department.", opts:["inspect","inspected","are inspecting","are inspected"], ans:3, exp:"Cần bị động: nhà hàng ĐƯỢC kiểm tra (bởi cơ quan y tế). Hiện tại đơn bị động = are + V3 → 'are inspected'. (A) chủ động; (B) thiếu trợ động từ; (C) chủ động tiếp diễn." },
-  { n:24, text:"Sweet Sunlight Bakery has steadily built a _____ base of customers with its delicious cookies and cakes.", opts:["brief","loyal","strict","careful"], ans:1, exp:"'Loyal customer base' = cơ sở khách hàng trung thành — cụm cực phổ biến trong kinh doanh/marketing. (A) trái nghĩa với 'steadily built'; (C)(D) không mô tả đặc tính khách hàng." },
-  { n:25, text:"According to financial analysts, _____ in medical technology companies are expected to increase in value.", opts:["invest","investing","invested","investments"], ans:3, exp:"Cần danh từ số nhiều làm chủ ngữ trước 'are expected'. 'Investments' (các khoản đầu tư) đúng. (A) động từ; (B) gerund (ít tự nhiên hơn); (C) V-ed không hợp." },
-  { n:26, text:"The city's harbor is _____ to container ships and fishing vessels of all sizes.", opts:["accessible","formal","reasonable","likely"], ans:0, exp:"'Accessible to' = có thể tiếp cận/tiếp nhận — cụm chuẩn khi mô tả cơ sở hạ tầng. (B)(C)(D) không kết hợp tự nhiên với 'to container ships'." },
-  { n:27, text:"Maya's Dancewear expanded its advertising markets and sales have _____ increased.", opts:["controlling","consequently","beneath","even though"], ans:1, exp:"'Consequently' (do đó) thể hiện quan hệ nguyên nhân-kết quả: mở rộng quảng cáo → doanh số tăng. (A) V-ing/tính từ; (C) giới từ vị trí; (D) liên từ tương phản." },
-  { n:28, text:"Dobson Ice Cream will not introduce any new flavors _____ the customer survey results are analyzed.", opts:["around","until","despite","past"], ans:1, exp:"'Until' (cho đến khi) — hành động bị hoãn lại cho đến khi điều kiện hoàn thành. (A) không dùng làm liên từ thời gian kiểu này; (C) chỉ tương phản; (D) không là liên từ." },
-  { n:29, text:"The renovated company gym _____ with free weights and exercise machines.", opts:["will equip","to equip","has been equipped","is equipping"], ans:2, exp:"Cần bị động: phòng gym ĐƯỢC trang bị. 'Renovated' gợi ý kết quả hiện tại → hiện tại hoàn thành bị động: 'has been equipped'. (A)(D) chủ động; (B) động từ nguyên thể." },
-  { n:30, text:"_____ driving their cars, workers who travel to the town center should use the bus lines.", opts:["Because of","Instead of","Whenever","Although"], ans:1, exp:"'Instead of' (thay vì) — thay vì lái xe, hãy đi xe buýt. Đúng nghĩa và đúng cấu trúc 'Instead of + V-ing'. (A) không hợp nghĩa; (C)(D) cần mệnh đề đầy đủ, không đi với V-ing." }
+  // Passage 1: 131 - 134
+  {
+    n: 131,
+    text: `<div class="passage-box">
+      <strong>JOIN THE RGBS AUTOMOTIVE TEAM</strong><br><br>
+      RGBS Automotive is <span class="q-blank active">------ (131)</span> hiring full-time and part-time workers. Apply today! <span class="q-blank">------ (132)</span> could become part of our manufacturing team! We make high-tech products <span class="q-blank">------ (133)</span> found in cars and trucks of all kinds. RGBS Automotive pays well, and we provide ongoing training plus opportunities for promotion. <span class="q-blank">------ (134)</span>. Go to www.rgbsautomotive.com for more details and to fill out an application.
+    </div>`,
+    opts: ["now", "likewise", "there", "instead"],
+    ans: 0,
+    exp: "Trạng từ <strong>now</strong> kết hợp với 'hiring' tạo thành cụm từ tuyển dụng phổ biến 'now hiring' (hiện đang tuyển dụng)."
+  },
+  {
+    n: 132,
+    text: `<div class="passage-box">
+      <strong>JOIN THE RGBS AUTOMOTIVE TEAM</strong><br><br>
+      RGBS Automotive is <span class="q-blank">------ (131)</span> hiring full-time and part-time workers. Apply today! <span class="q-blank active">------ (132)</span> could become part of our manufacturing team! We make high-tech products <span class="q-blank">------ (133)</span> found in cars and trucks of all kinds. RGBS Automotive pays well, and we provide ongoing training plus opportunities for promotion. <span class="q-blank">------ (134)</span>. Go to www.rgbsautomotive.com for more details and to fill out an application.
+    </div>`,
+    opts: ["It", "You", "They", "Everyone"],
+    ans: 1,
+    exp: "Đại từ nhân xưng chủ ngữ <strong>You</strong> (Bạn) dùng để xưng hô trực tiếp và kêu gọi người đọc quảng cáo ứng tuyển."
+  },
+  {
+    n: 133,
+    text: `<div class="passage-box">
+      <strong>JOIN THE RGBS AUTOMOTIVE TEAM</strong><br><br>
+      RGBS Automotive is <span class="q-blank">------ (131)</span> hiring full-time and part-time workers. Apply today! <span class="q-blank">------ (132)</span> could become part of our manufacturing team! We make high-tech products <span class="q-blank active">------ (133)</span> found in cars and trucks of all kinds. RGBS Automotive pays well, and we provide ongoing training plus opportunities for promotion. <span class="q-blank">------ (134)</span>. Go to www.rgbsautomotive.com for more details and to fill out an application.
+    </div>`,
+    opts: ["can be", "that are", "and being", "that had been"],
+    ans: 1,
+    exp: "Mệnh đề quan hệ ở dạng bị động <strong>that are</strong> (+ found) bổ nghĩa cho danh từ 'products' đứng trước."
+  },
+  {
+    n: 134,
+    text: `<div class="passage-box">
+      <strong>JOIN THE RGBS AUTOMOTIVE TEAM</strong><br><br>
+      RGBS Automotive is <span class="q-blank">------ (131)</span> hiring full-time and part-time workers. Apply today! <span class="q-blank">------ (132)</span> could become part of our manufacturing team! We make high-tech products <span class="q-blank">------ (133)</span> found in cars and trucks of all kinds. RGBS Automotive pays well, and we provide ongoing training plus opportunities for promotion. <span class="q-blank active">------ (134)</span>. Go to www.rgbsautomotive.com for more details and to fill out an application.
+    </div>`,
+    opts: [
+      "Ours is a highly competitive industry.",
+      "RGBS Automotive began doing business 45 years ago.",
+      "We also offer a generous number of vacation days.",
+      "RGBS Automotive sells a wide selection of merchandise."
+    ],
+    ans: 2,
+    exp: "Câu trước nói về các phúc lợi hấp dẫn (lương cao, đào tạo liên tục, cơ hội thăng tiến). Câu tiếp nối phù hợp nhất phải liệt kê thêm phúc lợi: **We also offer a generous number of vacation days** (Chúng tôi cũng cung cấp số ngày nghỉ phép hào phóng)."
+  },
+  // Passage 2: 135 - 138
+  {
+    n: 135,
+    text: `<div class="passage-box">
+      <strong>MEMO</strong><br>
+      <strong>To:</strong> Marketing Team<br>
+      <strong>From:</strong> Alyssa Jacobs, Project Manager<br>
+      <strong>Date:</strong> 27 September<br>
+      <strong>Subject:</strong> Meeting wrap-up<br><br>
+      Thank you again to all of you for your fine work on the upcoming marketing campaign for the Turbo Omega 2 smartphone. As <span class="q-blank active">------ (135)</span> during yesterday's meeting, our goal is to launch the television, radio, and social media advertisements on 1 November. The phone itself will be in stores by 1 December. <span class="q-blank">------ (136)</span>.<br><br>
+      <span class="q-blank">------ (137)</span>, Gary Carollo will draft the press release and post it on our shared drive, where all of you will be able to read it. Please e-mail any <span class="q-blank">------ (138)</span> for changes to Gary within one week. He will present his final draft at our next regular meeting. We will also tie up any loose ends at that time.
+    </div>`,
+    opts: ["taken", "driven", "earned", "decided"],
+    ans: 3,
+    exp: "Dạng bị động rút gọn <strong>decided</strong> trong cấu trúc 'As decided during...' (Như đã được thống nhất/quyết định trong...)."
+  },
+  {
+    n: 136,
+    text: `<div class="passage-box">
+      <strong>MEMO</strong><br>
+      <strong>To:</strong> Marketing Team<br>
+      <strong>From:</strong> Alyssa Jacobs, Project Manager<br>
+      <strong>Date:</strong> 27 September<br>
+      <strong>Subject:</strong> Meeting wrap-up<br><br>
+      Thank you again to all of you for your fine work on the upcoming marketing campaign for the Turbo Omega 2 smartphone. As <span class="q-blank">------ (135)</span> during yesterday's meeting, our goal is to launch the television, radio, and social media advertisements on 1 November. The phone itself will be in stores by 1 December. <span class="q-blank active">------ (136)</span>.<br><br>
+      <span class="q-blank">------ (137)</span>, Gary Carollo will draft the press release and post it on our shared drive, where all of you will be able to read it. Please e-mail any <span class="q-blank">------ (138)</span> for changes to Gary within one week. He will present his final draft at our next regular meeting. We will also tie up any loose ends at that time.
+    </div>`,
+    opts: [
+      "Remember to turn off your phone at the end of the workday.",
+      "This gives us one month to generate consumer excitement.",
+      "The wholesale price can also be adjusted if necessary.",
+      "These new features will surely increase Turbo Omega 2 sales."
+    ],
+    ans: 1,
+    exp: "Quảng cáo chạy từ 1 November và mở bán từ 1 December. Khoảng cách thời gian là 1 tháng. Câu phù hợp là **This gives us one month to generate consumer excitement** (Điều này cho chúng ta một tháng để tạo sự hào hứng cho người tiêu dùng)."
+  },
+  {
+    n: 137,
+    text: `<div class="passage-box">
+      <strong>MEMO</strong><br>
+      <strong>To:</strong> Marketing Team<br>
+      <strong>From:</strong> Alyssa Jacobs, Project Manager<br>
+      <strong>Date:</strong> 27 September<br>
+      <strong>Subject:</strong> Meeting wrap-up<br><br>
+      Thank you again to all of you for your fine work on the upcoming marketing campaign for the Turbo Omega 2 smartphone. As <span class="q-blank">------ (135)</span> during yesterday's meeting, our goal is to launch the television, radio, and social media advertisements on 1 November. The phone itself will be in stores by 1 December. <span class="q-blank">------ (136)</span>.<br><br>
+      <span class="q-blank active">------ (137)</span>, Gary Carollo will draft the press release and post it on our shared drive, where all of you will be able to read it. Please e-mail any <span class="q-blank">------ (138)</span> for changes to Gary within one week. He will present his final draft at our next regular meeting. We will also tie up any loose ends at that time.
+    </div>`,
+    opts: ["Rather", "Soon", "After all", "That is"],
+    ans: 1,
+    exp: "Trạng từ chỉ thời gian liên kết <strong>Soon</strong> (Sắp tới/Chẳng bao lâu nữa) chỉ một sự kiện sắp diễn ra tiếp theo."
+  },
+  {
+    n: 138,
+    text: `<div class="passage-box">
+      <strong>MEMO</strong><br>
+      <strong>To:</strong> Marketing Team<br>
+      <strong>From:</strong> Alyssa Jacobs, Project Manager<br>
+      <strong>Date:</strong> 27 September<br>
+      <strong>Subject:</strong> Meeting wrap-up<br><br>
+      Thank you again to all of you for your fine work on the upcoming marketing campaign for the Turbo Omega 2 smartphone. As <span class="q-blank">------ (135)</span> during yesterday's meeting, our goal is to launch the television, radio, and social media advertisements on 1 November. The phone itself will be in stores by 1 December. <span class="q-blank">------ (136)</span>.<br><br>
+      <span class="q-blank">------ (137)</span>, Gary Carollo will draft the press release and post it on our shared drive, where all of you will be able to read it. Please e-mail any <span class="q-blank active">------ (138)</span> for changes to Gary within one week. He will present his final draft at our next regular meeting. We will also tie up any loose ends at that time.
+    </div>`,
+    opts: ["suggestions", "suggests", "suggested", "suggesting"],
+    ans: 0,
+    exp: "Cấu trúc: **any + danh từ số nhiều** (suggestions). 'Please e-mail any suggestions for changes' = Vui lòng gửi email bất kỳ đề xuất thay đổi nào."
+  },
+  // Passage 3: 139 - 142
+  {
+    n: 139,
+    text: `<div class="passage-box">
+      <strong>Handmade Silk Blouse by Coreopsis Textiles, Size Medium, £45</strong><br><br>
+      Coreopsis Textiles' silk blouses are created from vintage fabrics and other recycled components that we sew together in a patchwork fashion. Because all <span class="q-blank active">------ (139)</span> garments are handcrafted, each is one of a kind. <span class="q-blank">------ (140)</span>. Unique variations within each piece are part of the charm of Coreopsis Textiles' products. The blouse you receive will be similar in style but not identical to the one pictured.<br><br>
+      Please note that this garment is <span class="q-blank">------ (141)</span>. It is recommended that you either hand-wash it or wash it in cold water on the gentle cycle in a mesh bag. While the item has been prewashed, dryer heat may cause it to shrink. <span class="q-blank">------ (142)</span>, it is important that it be hung to air dry.
+    </div>`,
+    opts: ["its", "our", "your", "their"],
+    ans: 1,
+    exp: "Dùng tính từ sở hữu <strong>our</strong> (của chúng tôi) vì đây là văn bản tự giới thiệu sản phẩm thủ công của Coreopsis Textiles."
+  },
+  {
+    n: 140,
+    text: `<div class="passage-box">
+      <strong>Handmade Silk Blouse by Coreopsis Textiles, Size Medium, £45</strong><br><br>
+      Coreopsis Textiles' silk blouses are created from vintage fabrics and other recycled components that we sew together in a patchwork fashion. Because all <span class="q-blank">------ (139)</span> garments are handcrafted, each is one of a kind. <span class="q-blank active">------ (140)</span>. Unique variations within each piece are part of the charm of Coreopsis Textiles' products. The blouse you receive will be similar in style but not identical to the one pictured.<br><br>
+      Please note that this garment is <span class="q-blank">------ (141)</span>. It is recommended that you either hand-wash it or wash it in cold water on the gentle cycle in a mesh bag. While the item has been prewashed, dryer heat may cause it to shrink. <span class="q-blank">------ (142)</span>, it is important that it be hung to air dry.
+    </div>`,
+    opts: [
+      "This is a hassle-free return policy.",
+      "Always check your receipt.",
+      "They cannot be exactly replicated.",
+      "Extra shipping charges may apply."
+    ],
+    ans: 2,
+    exp: "Câu trước viết 'each is one of a kind' (mỗi sản phẩm là độc nhất vô nhị). Câu sau bổ trợ: **They cannot be exactly replicated** (Chúng không thể được sao chép/tạo ra giống hệt nhau)."
+  },
+  {
+    n: 141,
+    text: `<div class="passage-box">
+      <strong>Handmade Silk Blouse by Coreopsis Textiles, Size Medium, £45</strong><br><br>
+      Coreopsis Textiles' silk blouses are created from vintage fabrics and other recycled components that we sew together in a patchwork fashion. Because all <span class="q-blank">------ (139)</span> garments are handcrafted, each is one of a kind. <span class="q-blank">------ (140)</span>. Unique variations within each piece are part of the charm of Coreopsis Textiles' products. The blouse you receive will be similar in style but not identical to the one pictured.<br><br>
+      Please note that this garment is <span class="q-blank active">------ (141)</span>. It is recommended that you either hand-wash it or wash it in cold water on the gentle cycle in a mesh bag. While the item has been prewashed, dryer heat may cause it to shrink. <span class="q-blank">------ (142)</span>, it is important that it be hung to air dry.
+    </div>`,
+    opts: ["popular", "delicate", "mild", "unavailable"],
+    ans: 1,
+    exp: "Tính từ <strong>delicate</strong> (mỏng manh, dễ hỏng, cần giặt nhẹ tay) phù hợp với lời khuyên giặt tay hoặc giặt chế độ nhẹ nhàng trong túi lưới."
+  },
+  {
+    n: 142,
+    text: `<div class="passage-box">
+      <strong>Handmade Silk Blouse by Coreopsis Textiles, Size Medium, £45</strong><br><br>
+      Coreopsis Textiles' silk blouses are created from vintage fabrics and other recycled components that we sew together in a patchwork fashion. Because all <span class="q-blank">------ (139)</span> garments are handcrafted, each is one of a kind. <span class="q-blank">------ (140)</span>. Unique variations within each piece are part of the charm of Coreopsis Textiles' products. The blouse you receive will be similar in style but not identical to the one pictured.<br><br>
+      Please note that this garment is <span class="q-blank">------ (141)</span>. It is recommended that you either hand-wash it or wash it in cold water on the gentle cycle in a mesh bag. While the item has been prewashed, dryer heat may cause it to shrink. <span class="q-blank active">------ (142)</span>, it is important that it be hung to air dry.
+    </div>`,
+    opts: ["If not", "Likewise", "Therefore", "On the contrary"],
+    ans: 2,
+    exp: "Từ liên kết chỉ kết quả <strong>Therefore</strong> (Do đó) diễn tả quan hệ nguyên nhân - kết quả: do máy sấy có thể làm co vải nên phải treo để tự khô gió."
+  },
+  // Passage 4: 143 - 146
+  {
+    n: 143,
+    text: `<div class="passage-box">
+      <strong>To:</strong> Shu Jiang &lt;sjiang@rowanatech.ca&gt;<br>
+      <strong>From:</strong> Maxwell Baschet &lt;mbaschet@mapleroadstorage.ca&gt;<br>
+      <strong>Date:</strong> 4 April<br>
+      <strong>Subject:</strong> Your contract<br>
+      <strong>Attachment:</strong> Jiang contract<br><br>
+      Dear Ms. Jiang,<br><br>
+      We are pleased you <span class="q-blank active">-------- (143)</span> Maple Road Storage for your storage needs. I have attached a copy of your signed contract. <span class="q-blank">------- (144)</span>. Do you know about our referral program? You will receive one free month of storage if someone you recommend signs a contract with us. The new tenant will receive a free month <span class="q-blank">------- (145)</span>. You can find more information about this program and all our special <span class="q-blank">------- (146)</span> on our Web site at www.mapleroadstorage.ca.<br><br>
+      Sincerely,<br>
+      Maxwell Baschet, Site Manager
+    </div>`,
+    opts: ["chooses", "will choose", "chosen", "have chosen"],
+    ans: 3,
+    exp: "Thì hiện tại hoàn thành <strong>have chosen</strong> dùng để diễn tả hành động đã hoàn thành việc chọn và ký kết hợp đồng lưu kho."
+  },
+  {
+    n: 144,
+    text: `<div class="passage-box">
+      <strong>To:</strong> Shu Jiang &lt;sjiang@rowanatech.ca&gt;<br>
+      <strong>From:</strong> Maxwell Baschet &lt;mbaschet@mapleroadstorage.ca&gt;<br>
+      <strong>Date:</strong> 4 April<br>
+      <strong>Subject:</strong> Your contract<br>
+      <strong>Attachment:</strong> Jiang contract<br><br>
+      Dear Ms. Jiang,<br><br>
+      We are pleased you <span class="q-blank">-------- (143)</span> Maple Road Storage for your storage needs. I have attached a copy of your signed contract. <span class="q-blank active">------- (144)</span>. Do you know about our referral program? You will receive one free month of storage if someone you recommend signs a contract with us. The new tenant will receive a free month <span class="q-blank">------- (145)</span>. You can find more information about this program and all our special <span class="q-blank">------- (146)</span> on our Web site at www.mapleroadstorage.ca.<br><br>
+      Sincerely,<br>
+      Maxwell Baschet, Site Manager
+    </div>`,
+    opts: [
+      "If your contact information changes, please let us know.",
+      "We hope you will enjoy working here.",
+      "We will reply as soon as possible.",
+      "However, business contracts can be difficult to understand."
+    ],
+    ans: 0,
+    exp: "Câu phù hợp nhất để bổ trợ thông tin liên quan tới việc gửi hợp đồng lưu trữ thông tin liên hệ là **If your contact information changes, please let us know** (Nếu thông tin liên hệ của bạn thay đổi, vui lòng cho chúng tôi biết)."
+  },
+  {
+    n: 145,
+    text: `<div class="passage-box">
+      <strong>To:</strong> Shu Jiang &lt;sjiang@rowanatech.ca&gt;<br>
+      <strong>From:</strong> Maxwell Baschet &lt;mbaschet@mapleroadstorage.ca&gt;<br>
+      <strong>Date:</strong> 4 April<br>
+      <strong>Subject:</strong> Your contract<br>
+      <strong>Attachment:</strong> Jiang contract<br><br>
+      Dear Ms. Jiang,<br><br>
+      We are pleased you <span class="q-blank">-------- (143)</span> Maple Road Storage for your storage needs. I have attached a copy of your signed contract. <span class="q-blank">------- (144)</span>. Do you know about our referral program? You will receive one free month of storage if someone you recommend signs a contract with us. The new tenant will receive a free month <span class="q-blank active">------- (145)</span>. You can find more information about this program and all our special <span class="q-blank">------- (146)</span> on our Web site at www.mapleroadstorage.ca.<br><br>
+      Sincerely,<br>
+      Maxwell Baschet, Site Manager
+    </div>`,
+    opts: ["after all", "again", "as well", "since"],
+    ans: 2,
+    exp: "Trạng từ <strong>as well</strong> ở cuối câu mang ý nghĩa 'cũng vậy/cũng thế' (cả người giới thiệu lẫn người thuê mới đều được nhận 1 tháng miễn phí)."
+  },
+  {
+    n: 146,
+    text: `<div class="passage-box">
+      <strong>To:</strong> Shu Jiang &lt;sjiang@rowanatech.ca&gt;<br>
+      <strong>From:</strong> Maxwell Baschet &lt;mbaschet@mapleroadstorage.ca&gt;<br>
+      <strong>Date:</strong> 4 April<br>
+      <strong>Subject:</strong> Your contract<br>
+      <strong>Attachment:</strong> Jiang contract<br><br>
+      Dear Ms. Jiang,<br><br>
+      We are pleased you <span class="q-blank">-------- (143)</span> Maple Road Storage for your storage needs. I have attached a copy of your signed contract. <span class="q-blank">------- (144)</span>. Do you know about our referral program? You will receive one free month of storage if someone you recommend signs a contract with us. The new tenant will receive a free month <span class="q-blank">------- (145)</span>. You can find more information about this program and all our special <span class="q-blank active">------- (146)</span> on our Web site at www.mapleroadstorage.ca.<br><br>
+      Sincerely,<br>
+      Maxwell Baschet, Site Manager
+    </div>`,
+    opts: ["offers", "schedules", "classes", "amounts"],
+    ans: 0,
+    exp: "Cụm danh từ cố định <strong>special offers</strong> nghĩa là các ưu đãi/khuyến mãi đặc biệt."
+  }
+];ia the Garner City Transport Web site at www.garnercitytransport.org.
+    </div>`,
+    opts: [
+      "People often use credit cards to purchase meals during the flight.",
+      "Many people like public transportation because it is inexpensive.",
+      "The durable cards are made from recycled materials.",
+      "There was a small price increase last month."
+    ],
+    ans: 2,
+    exp: "Đoạn văn đang thảo luận về chiếc thẻ nhựa nạp tiền thay vé giấy. Câu C bổ trợ thông tin là **những chiếc thẻ bền bỉ này được làm từ vật liệu tái chế** (The durable cards are made from recycled materials) để hỗ trợ môi trường."
+  }
 ];
 
 // Data normalization
@@ -934,6 +1188,7 @@ function shuffle(arr) {
 
 function shuffleAll() {
   const shuffledPool = shuffle(originalQuestions).map(q => {
+    // Preserve the HTML classes for Part 6 when shuffling options:
     const indexed = q.options.map((o, i) => ({ text: o, orig: i }));
     shuffle(indexed);
     const newAnswer = indexed.findIndex(x => x.orig === q.answer);
@@ -975,7 +1230,7 @@ function renderDots() {
   questions.forEach((q, idx) => {
     const btn = document.createElement('div');
     btn.className = 'dot-btn';
-    btn.textContent = idx + 1;
+    btn.textContent = q.id; // Using exact TOEIC Q numbers for Part 6 (e.g., 131, 132...)
     btn.id = 'dotBtn_' + idx;
     btn.onclick = () => {
       current = idx;
@@ -1036,7 +1291,7 @@ function renderQuestion() {
 
   document.getElementById('qBadge').textContent = `Câu ${q.id}`;
   
-  const formattedText = q.text.replace(/_____|-------+/g, '<span class="q-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+  const formattedText = q.text.includes('passage-box') ? q.text : q.text.replace(/_____|-------+/g, '<span class="q-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
   document.getElementById('qText').innerHTML = formattedText;
   
   const list = document.getElementById('optionsList');
@@ -1178,6 +1433,7 @@ function showReviewList() {
     const ua = answers[q.id];
     const isCorrect = ua === q.answer;
     
+    // For review list in Part 6, show a simplified review item:
     html += `
       <div class="review-item">
         <div class="review-header">
@@ -1185,9 +1441,6 @@ function showReviewList() {
           <span class="review-status-tag ${isCorrect ? 'correct' : 'wrong'}">
             ${isCorrect ? '✓ Đúng' : '✗ Sai'}
           </span>
-        </div>
-        <div class="q-text" style="font-size: 15px; font-weight:500;">
-          ${q.text.replace(/_____|-------+/g, '<u><strong>' + q.options[q.answer] + '</strong></u>')}
         </div>
         <div class="review-ans-box">
           ${ua !== undefined ? `Bạn chọn: <span style="font-weight: 600; color: ${isCorrect ? 'var(--correct-text)' : 'var(--wrong-text)'}">(${labels[ua]}) ${q.options[ua]}</span><br>` : ''}
@@ -1217,7 +1470,7 @@ window.addEventListener('DOMContentLoaded', () => {
     'Practice8.html': 'menu_p8'
   };
   const filename = window.location.pathname.split('/').pop();
-  const activeMenuId = pageMap[filename] || 'menu_p1';
+  const activeMenuId = pageMap[filename] || 'menu_p8';
   const activeItem = document.getElementById(activeMenuId);
   if (activeItem) activeItem.classList.add('active');
   

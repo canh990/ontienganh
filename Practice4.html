@@ -703,9 +703,21 @@ input:checked + .theme-slider:before {
       <span>Practice 4</span>
       <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 101–130</span>
     </a>
-    <a href="Pratice5.html" class="drawer-item" id="menu_p5">
+    <a href="Practice5.html" class="drawer-item" id="menu_p5">
       <span>Practice 5</span>
       <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 101–130</span>
+    </a>
+    <a href="Practice6.html" class="drawer-item" id="menu_p6">
+      <span>Practice 6</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 131–146</span>
+    </a>
+    <a href="Practice7.html" class="drawer-item" id="menu_p7">
+      <span>Practice 7</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 131–146</span>
+    </a>
+    <a href="Practice8.html" class="drawer-item" id="menu_p8">
+      <span>Practice 8</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 131–146</span>
     </a>
   </nav>
   <div class="drawer-footer">
@@ -1012,11 +1024,11 @@ function renderQuestion() {
   
   const statusBadge = document.getElementById('statusBadge');
   statusBadge.className = 'status-badge';
-  if (submitted || ua !== undefined) {
+  if (submitted) {
     if (isCorrect) {
       statusBadge.textContent = '✓ Chính xác';
       statusBadge.classList.add('correct');
-    } else if (ua !== undefined) {
+    } else {
       statusBadge.textContent = '✗ Sai rồi';
       statusBadge.classList.add('wrong');
     }
@@ -1035,8 +1047,7 @@ function renderQuestion() {
     const div = document.createElement('div');
     let cls = 'option-item';
     
-    const isAnswered = ua !== undefined;
-    const revealed = submitted || isAnswered;
+    const revealed = submitted;
     
     if (revealed) {
       cls += ' disabled';
@@ -1059,7 +1070,7 @@ function renderQuestion() {
   });
   
   const expBox = document.getElementById('explainBox');
-  const showExp = submitted || ua !== undefined;
+  const showExp = submitted;
   if (showExp && q.explain) {
     expBox.innerHTML = `💡 <strong>Giải thích:</strong> ${q.explain}`;
     expBox.classList.add('show');
@@ -1087,19 +1098,17 @@ function selectOption(idx) {
   renderQuestion();
   updateProgress();
   
-  if (idx === q.answer) {
-    setTimeout(() => {
-      if (current < questions.length - 1) {
-        current++;
-        renderQuestion();
-      } else {
-        const allAnswered = questions.every(x => answers[x.id] !== undefined);
-        if (allAnswered) {
-          showResult();
-        }
+  setTimeout(() => {
+    if (current < questions.length - 1) {
+      current++;
+      renderQuestion();
+    } else {
+      const allAnswered = questions.every(x => answers[x.id] !== undefined);
+      if (allAnswered) {
+        showResult();
       }
-    }, 900);
-  }
+    }
+  }, 600);
 }
 
 function navigate(dir) {
@@ -1112,8 +1121,12 @@ function updateProgress() {
   const pct = questions.length > 0 ? (answeredCount / questions.length * 100) : 0;
   document.getElementById('progressFill').style.width = pct + '%';
   
-  const correctCount = questions.filter(q => answers[q.id] === q.answer).length;
-  document.getElementById('scoreBadge').textContent = `${correctCount} / ${questions.length}`;
+  if (submitted) {
+    const correctCount = questions.filter(q => answers[q.id] === q.answer).length;
+    document.getElementById('scoreBadge').textContent = `${correctCount} / ${questions.length}`;
+  } else {
+    document.getElementById('scoreBadge').textContent = `${answeredCount} / ${questions.length}`;
+  }
 }
 
 function showResult() {
@@ -1193,11 +1206,15 @@ window.addEventListener('DOMContentLoaded', () => {
   initTheme();
   
   const pageMap = {
+    'index.html': 'menu_home',
     'Practice1.html': 'menu_p1',
     'Practice2.html': 'menu_p2',
     'Practice3.html': 'menu_p3',
     'Practice4.html': 'menu_p4',
-    'Pratice5.html': 'menu_p5'
+    'Practice5.html': 'menu_p5',
+    'Practice6.html': 'menu_p6',
+    'Practice7.html': 'menu_p7',
+    'Practice8.html': 'menu_p8'
   };
   const filename = window.location.pathname.split('/').pop();
   const activeMenuId = pageMap[filename] || 'menu_p4';
@@ -1209,7 +1226,10 @@ window.addEventListener('DOMContentLoaded', () => {
     'menu_p2': 'TOEIC Practice 2',
     'menu_p3': 'TOEIC Practice 3',
     'menu_p4': 'TOEIC Practice 4',
-    'menu_p5': 'TOEIC Practice 5'
+    'menu_p5': 'TOEIC Practice 5',
+    'menu_p6': 'TOEIC Practice 6',
+    'menu_p7': 'TOEIC Practice 7',
+    'menu_p8': 'TOEIC Practice 8'
   };
   const headerTitle = document.getElementById('headerTitle');
   if (headerTitle) headerTitle.textContent = titleMap[activeMenuId];

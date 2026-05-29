@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>TOEIC Set 2 — Câu 1–30</title>
+<title>TOEIC Practice 7 — Câu 131–146</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -285,6 +285,42 @@ header h1 {
   display: inline-block;
   min-width: 60px;
   text-align: center;
+}
+
+/* Part 6 Passage Box Styling */
+.passage-box {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 16px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text);
+  box-shadow: inset 0 2px 4px var(--shadow);
+}
+.passage-box strong {
+  color: var(--text);
+}
+.passage-box .q-blank {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  min-width: unset;
+  margin: 0 4px;
+  text-align: center;
+  transition: var(--transition);
+}
+.passage-box .q-blank.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.15);
 }
 
 .options-list {
@@ -705,7 +741,7 @@ input:checked + .theme-slider:before {
     </a>
     <a href="Practice5.html" class="drawer-item" id="menu_p5">
       <span>Practice 5</span>
-      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 1–30</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 101–130</span>
     </a>
     <a href="Practice6.html" class="drawer-item" id="menu_p6">
       <span>Practice 6</span>
@@ -736,9 +772,9 @@ input:checked + .theme-slider:before {
     <button class="menu-btn" onclick="toggleDrawer(true)">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
-    <h1 id="headerTitle">TOEIC Practice 1</h1>
+    <h1 id="headerTitle">TOEIC Practice 7</h1>
   </div>
-  <span class="score-badge" id="scoreBadge">0 / 30</span>
+  <span class="score-badge" id="scoreBadge">0 / 16</span>
 </header>
 
 <div class="progress-container">
@@ -750,7 +786,7 @@ input:checked + .theme-slider:before {
 <div class="container">
   <div id="quizView" class="card">
     <div class="q-badge-row">
-      <span class="q-badge" id="qBadge">Câu 1</span>
+      <span class="q-badge" id="qBadge">Câu 131</span>
       <span class="status-badge" id="statusBadge">✓ Chính xác</span>
     </div>
     
@@ -777,14 +813,14 @@ input:checked + .theme-slider:before {
         </defs>
       </svg>
       <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;">
-        <span id="resultScore" style="font-size: 26px; font-weight: 700; color: var(--text);">0/30</span>
+        <span id="resultScore" style="font-size: 26px; font-weight: 700; color: var(--text);">0/16</span>
         <span id="resultPercent" style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 4px;">0%</span>
       </div>
     </div>
 
     <div class="result-stats-grid">
       <div class="result-stat-box">
-        <div class="result-stat-num" id="statTotal" style="color: var(--primary);">30</div>
+        <div class="result-stat-num" id="statTotal" style="color: var(--primary);">16</div>
         <div class="result-stat-lbl">Tổng số</div>
       </div>
       <div class="result-stat-box">
@@ -812,7 +848,7 @@ input:checked + .theme-slider:before {
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
     Trước
   </button>
-  <div class="nav-info" id="navInfo">Câu 1 / 30</div>
+  <div class="nav-info" id="navInfo">Câu 1 / 16</div>
   <button class="btn-nav" id="nextBtn" onclick="navigate(1)">
     Tiếp
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -821,37 +857,235 @@ input:checked + .theme-slider:before {
 </div>
 
 <script>
+// RAW DATA POOL & CODE ENGINE HERE
 const QUESTIONS_RAW = [
-  { n:1, text:"When she held her last meeting, Ms. Toba _____ her sales staff to perform even better next quarter.", opts:["encourage","is encouraging","encouraged","was encouraged"], ans:2, exp:"Dấu hiệu quá khứ đơn: 'When she held her last meeting'. Chủ ngữ 'Ms. Toba' chủ động khuyến khích → 'encouraged'. (A) hiện tại; (B) hiện tại tiếp diễn; (D) bị động — sai vì Ms. Toba là người thực hiện hành động." },
-  { n:2, text:"All staff have been informed _____ the proposed partnership with ERI Finance.", opts:["for","about","to","at"], ans:1, exp:"Collocation cố định: 'inform someone ABOUT something' = thông báo về điều gì. (A)(C)(D) không kết hợp được với 'informed' trong cấu trúc này." },
-  { n:3, text:"On Friday, Mr. Nakamura will discuss _____ ideas for supporting busy quarters.", opts:["his","him","himself","he"], ans:0, exp:"Cần tính từ sở hữu trước danh từ 'ideas'. Mr. Nakamura (nam, ngôi 3 số ít) → 'his'. (B) tân ngữ; (C) phản thân; (D) chủ ngữ." },
-  { n:4, text:"The Forestry Commission was created to _____ the state's natural resources and wildlife.", opts:["allow","manage","succeed","finish"], ans:1, exp:"'Manage' (quản lý) phù hợp nhất với nhiệm vụ của ủy ban nhà nước về tài nguyên thiên nhiên. (A)(C)(D) không hợp nghĩa với ngữ cảnh." },
-  { n:5, text:"By following established guidelines, construction workers will be able to complete their tasks _____.", opts:["safety","safe","safeness","safely"], ans:3, exp:"Cần trạng từ bổ nghĩa cho động từ 'complete'. 'Safely' (một cách an toàn) có đuôi -ly. (A) danh từ; (B) tính từ; (C) danh từ không phổ biến." },
-  { n:6, text:"With her numerous credentials, Dr. Kwan is highly _____ to teach medieval history at Mation University.", opts:["arranged","ready","available","qualified"], ans:3, exp:"'Highly qualified' = có trình độ cao — cụm phổ biến trong học thuật/tuyển dụng. Người có nhiều bằng cấp thì 'qualified'. (A)(B)(C) không diễn đạt năng lực chuyên môn." },
-  { n:7, text:"_____ at the annual technology conference is mandatory for all engineers at the Treemont Corporation.", opts:["Attendance","Attend","Attends","Attended"], ans:0, exp:"Cần danh từ làm chủ ngữ đầu câu trước 'is mandatory'. 'Attendance' (sự tham dự) là danh từ đúng. (B)(C)(D) là dạng động từ." },
-  { n:8, text:"The café _____ features poets, folk singers, and drama groups on its stage.", opts:["tightly","occasionally","vaguely","realistically"], ans:1, exp:"'Occasionally' (thỉnh thoảng) phù hợp — quán cà phê định kỳ tổ chức biểu diễn không thường xuyên. (A)(C)(D) không phù hợp về nghĩa/tần suất." },
-  { n:9, text:"Before the seminar began, attendees were assured _____ all scheduled presenters would appear.", opts:["who","around","that","therefore"], ans:2, exp:"Cấu trúc: 'assure someone THAT + mệnh đề'. 'That' là liên từ bổ ngữ bắt buộc. (A) đại từ quan hệ; (B) giới từ; (D) trạng từ liên kết." },
-  { n:10, text:"Forever Pet has been a leader in bringing new products, _____ Fun Bone and Chew Right, to the market.", opts:["however","furthermore","as if","such as"], ans:3, exp:"'Such as' = chẳng hạn như — dùng để đưa ví dụ cụ thể. 'Fun Bone và Chew Right' là ví dụ cho 'new products'. (A) tương phản; (B) thêm thông tin; (C) giả định." },
-  { n:11, text:"Ms. Turner is in charge of _____ the organization of records in the human services department.", opts:["improve","improved","improving","improvement"], ans:2, exp:"Cấu trúc: 'in charge of + V-ing' — sau giới từ 'of' phải dùng gerund. 'Improving' đúng. (A) động từ nguyên thể; (B) V-ed; (D) danh từ không tạo nghĩa khi ghép với 'the organization'." },
-  { n:12, text:"Shefton Bank clients always receive an e-mail or text _____ following any change to their account password.", opts:["issue","alert","claim","member"], ans:1, exp:"'Alert' (cảnh báo) phù hợp — 'a text alert' = tin nhắn cảnh báo là cụm phổ biến trong dịch vụ ngân hàng. (A)(C)(D) không hợp ngữ cảnh." },
-  { n:13, text:"A drop in consumer demand has led to a _____ decrease in the production of large pickup trucks.", opts:["remark","remarked","remarking","remarkable"], ans:3, exp:"Cần tính từ bổ nghĩa cho danh từ 'decrease' sau mạo từ 'a'. 'Remarkable decrease' = sự giảm đáng kể. (A) danh từ/động từ; (B)(C) dạng động từ." },
-  { n:14, text:"After coating the potatoes in flour and spices, chefs should place them _____ into the deep fryer.", opts:["rarely","honestly","doubtfully","directly"], ans:3, exp:"'Directly' (thẳng vào, ngay lập tức) phù hợp quy trình nấu ăn — thả trực tiếp vào chảo sau khi tẩm bột. (A)(B)(C) vô nghĩa trong ngữ cảnh này." },
-  { n:15, text:"Several banks have released applications that allow _____ customers to pay bills easily by phone.", opts:["their","they","them","themselves"], ans:0, exp:"Cần tính từ sở hữu trước danh từ 'customers'. 'Their customers' = khách hàng của họ (các ngân hàng). (B) chủ ngữ; (C) tân ngữ; (D) phản thân — đều không đứng trực tiếp trước danh từ." },
-  { n:16, text:"The personnel department will _____ only those applicants who have five or more years of experience for the position.", opts:["participate","consider","grant","make"], ans:1, exp:"'Consider applicants' (xem xét ứng viên) là từ chuẩn trong tuyển dụng. (A) không có tân ngữ trực tiếp; (C)(D) không hợp nghĩa trong ngữ cảnh tuyển dụng." },
-  { n:17, text:"Employees of Belfore Electronics Ltd are _____ involved in community-assistance programs.", opts:["active","actively","activate","activity"], ans:1, exp:"Cần trạng từ bổ nghĩa cho 'involved'. 'Actively involved' = tham gia tích cực — colocation cực phổ biến. (A) tính từ; (C) động từ; (D) danh từ." },
-  { n:18, text:"The executives at Macalter Equipment decided they would not _____ the contract without major changes.", opts:["renew","consume","identify","resemble"], ans:0, exp:"'Renew a contract' (gia hạn hợp đồng) là cụm phổ biến trong kinh doanh. (B)(C)(D) không đi tự nhiên với 'contract' trong ngữ cảnh này." },
-  { n:19, text:"Wet suits are made with a _____ layer of rubber that traps heat and keeps divers warm.", opts:["protect","protects","protective","protectively"], ans:2, exp:"Cần tính từ bổ nghĩa cho danh từ 'layer' sau mạo từ 'a'. 'Protective layer' = lớp bảo vệ. (A)(B) động từ; (D) trạng từ." },
-  { n:20, text:"Newcamp Services managers will meet to discuss the proposed _____ of three smaller branches into one large branch.", opts:["security","bracket","connector","merger"], ans:3, exp:"'Merger' (sự sáp nhập) mô tả chính xác việc gộp nhiều đơn vị lại — từ chuẩn trong kinh doanh. (A)(B)(C) không hợp ngữ cảnh sáp nhập công ty." },
-  { n:21, text:"At Yarzen Technology, client's records are _____ and can only be accessed by a small group of senior managers.", opts:["confide","confidential","confidentially","confidentiality"], ans:1, exp:"Sau 'are' cần tính từ làm vị ngữ. 'Confidential' (bí mật, mật) là tính từ đúng. (A) động từ; (C) trạng từ; (D) danh từ." },
-  { n:22, text:"The featured panel at the NHJ Medical Conference will discuss recent _____ in online health-care services.", opts:["memories","varieties","trends","rehearsals"], ans:2, exp:"'Trends' (xu hướng) phù hợp khi nói về sự phát triển/thay đổi trong y tế số. (A)(D) sai ngữ cảnh hoàn toàn; (B) không diễn đạt được sự thay đổi theo thời gian." },
-  { n:23, text:"All of Millville's restaurants _____ several times a year by the city health department.", opts:["inspect","inspected","are inspecting","are inspected"], ans:3, exp:"Cần bị động: nhà hàng ĐƯỢC kiểm tra (bởi cơ quan y tế). Hiện tại đơn bị động = are + V3 → 'are inspected'. (A) chủ động; (B) thiếu trợ động từ; (C) chủ động tiếp diễn." },
-  { n:24, text:"Sweet Sunlight Bakery has steadily built a _____ base of customers with its delicious cookies and cakes.", opts:["brief","loyal","strict","careful"], ans:1, exp:"'Loyal customer base' = cơ sở khách hàng trung thành — cụm cực phổ biến trong kinh doanh/marketing. (A) trái nghĩa với 'steadily built'; (C)(D) không mô tả đặc tính khách hàng." },
-  { n:25, text:"According to financial analysts, _____ in medical technology companies are expected to increase in value.", opts:["invest","investing","invested","investments"], ans:3, exp:"Cần danh từ số nhiều làm chủ ngữ trước 'are expected'. 'Investments' (các khoản đầu tư) đúng. (A) động từ; (B) gerund (ít tự nhiên hơn); (C) V-ed không hợp." },
-  { n:26, text:"The city's harbor is _____ to container ships and fishing vessels of all sizes.", opts:["accessible","formal","reasonable","likely"], ans:0, exp:"'Accessible to' = có thể tiếp cận/tiếp nhận — cụm chuẩn khi mô tả cơ sở hạ tầng. (B)(C)(D) không kết hợp tự nhiên với 'to container ships'." },
-  { n:27, text:"Maya's Dancewear expanded its advertising markets and sales have _____ increased.", opts:["controlling","consequently","beneath","even though"], ans:1, exp:"'Consequently' (do đó) thể hiện quan hệ nguyên nhân-kết quả: mở rộng quảng cáo → doanh số tăng. (A) V-ing/tính từ; (C) giới từ vị trí; (D) liên từ tương phản." },
-  { n:28, text:"Dobson Ice Cream will not introduce any new flavors _____ the customer survey results are analyzed.", opts:["around","until","despite","past"], ans:1, exp:"'Until' (cho đến khi) — hành động bị hoãn lại cho đến khi điều kiện hoàn thành. (A) không dùng làm liên từ thời gian kiểu này; (C) chỉ tương phản; (D) không là liên từ." },
-  { n:29, text:"The renovated company gym _____ with free weights and exercise machines.", opts:["will equip","to equip","has been equipped","is equipping"], ans:2, exp:"Cần bị động: phòng gym ĐƯỢC trang bị. 'Renovated' gợi ý kết quả hiện tại → hiện tại hoàn thành bị động: 'has been equipped'. (A)(D) chủ động; (B) động từ nguyên thể." },
-  { n:30, text:"_____ driving their cars, workers who travel to the town center should use the bus lines.", opts:["Because of","Instead of","Whenever","Although"], ans:1, exp:"'Instead of' (thay vì) — thay vì lái xe, hãy đi xe buýt. Đúng nghĩa và đúng cấu trúc 'Instead of + V-ing'. (A) không hợp nghĩa; (C)(D) cần mệnh đề đầy đủ, không đi với V-ing." }
+  // Passage 1: 131 - 134
+  {
+    n: 131,
+    text: `<div class="passage-box">
+      <strong>Local Barbershop Wins State Competition</strong><br>
+      <span style="font-size:12px; color:var(--text-muted)">By Miranda Warren</span><br><br>
+      MALENDA COUNTY (January 12) - Pat and Kenny's Barbershop, <span class="q-blank active">------- (131)</span> at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations. <span class="q-blank">------- (132)</span><br><br>
+      Founders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. <span class="q-blank">------- (133)</span> opened the shop 34 years ago. <span class="q-blank">------- (134)</span> the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.
+    </div>`,
+    opts: ["locate", "located", "locates", "location"],
+    ans: 1,
+    exp: "Rút gọn mệnh đề quan hệ dạng bị động (được đặt tại...): <em>which is located at...</em> -> <strong>located</strong>."
+  },
+  {
+    n: 132,
+    text: `<div class="passage-box">
+      <strong>Local Barbershop Wins State Competition</strong><br>
+      <span style="font-size:12px; color:var(--text-muted)">By Miranda Warren</span><br><br>
+      MALENDA COUNTY (January 12) - Pat and Kenny's Barbershop, <span class="q-blank">------- (131)</span> at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations. <span class="q-blank active">------- (132)</span><br><br>
+      Founders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. <span class="q-blank">------- (133)</span> opened the shop 34 years ago. <span class="q-blank">------- (134)</span> the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.
+    </div>`,
+    opts: [
+      "The results will be announced later this month.",
+      "We are proud to serve our community with excellence.",
+      "Pat and Kenny's shop excelled in all four categories.",
+      "Please call in advance to schedule an appointment."
+    ],
+    ans: 2,
+    exp: "Câu trước nói về 4 tiêu chí đánh giá (reputation, affordability, professionalism, accreditations). Câu tiếp nối phù hợp nhất là tiệm của Pat và Kenny đã xuất sắc trong cả 4 danh mục tiêu chí đó (excelled in all four categories)."
+  },
+  {
+    n: 133,
+    text: `<div class="passage-box">
+      <strong>Local Barbershop Wins State Competition</strong><br>
+      <span style="font-size:12px; color:var(--text-muted)">By Miranda Warren</span><br><br>
+      MALENDA COUNTY (January 12) - Pat and Kenny's Barbershop, <span class="q-blank">------- (131)</span> at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations. <span class="q-blank">------- (132)</span><br><br>
+      Founders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. <span class="q-blank active">------- (133)</span> opened the shop 34 years ago. <span class="q-blank">------- (134)</span> the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.
+    </div>`,
+    opts: ["I", "We", "They", "He"],
+    ans: 2,
+    exp: "Đại từ nhân xưng <strong>They</strong> thay thế cho hai người (Kenneth Webber và Patrick Miller) làm chủ ngữ thực hiện hành động mở tiệm."
+  },
+  {
+    n: 134,
+    text: `<div class="passage-box">
+      <strong>Local Barbershop Wins State Competition</strong><br>
+      <span style="font-size:12px; color:var(--text-muted)">By Miranda Warren</span><br><br>
+      MALENDA COUNTY (January 12) - Pat and Kenny's Barbershop, <span class="q-blank">------- (131)</span> at 3949 Grand Street, has been named the best barbershop in the state by the Barber and Hairdresser's Coalition. The criteria for selection include reputation, affordability, professionalism, and accreditations. <span class="q-blank">------- (132)</span><br><br>
+      Founders and owners Kenneth Webber and Patrick Miller have been best friends since childhood. <span class="q-blank">------- (133)</span> opened the shop 34 years ago. <span class="q-blank active">------- (134)</span> the shop retains its old-fashioned charm, the barbers have mastered the latest styles, not just the more traditional ones. People of all ages seeking a haircut or a new style should try Pat and Kenny's Barbershop.
+    </div>`,
+    opts: ["While", "Despite", "Even", "Yet"],
+    ans: 0,
+    exp: "Liên từ <strong>While</strong> (Mặc dù/Trong khi) thể hiện sự tương phản giữa 2 mệnh đề: một bên là giữ nét cổ điển, một bên là thành thạo phong cách hiện đại. 'Despite' đi với cụm danh từ; 'Even' cần đi với 'though' hoặc 'if'."
+  },
+
+  // Passage 2: 135 - 138
+  {
+    n: 135,
+    text: `<div class="passage-box">
+      <strong>Gasgo Propane Tank Exchange</strong><br><br>
+      You have chosen a safe and <span class="q-blank active">------- (135)</span> way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions <span class="q-blank">------- (136)</span>. When your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. <span class="q-blank">------- (137)</span>. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device. Be sure to visit us again when you need a <span class="q-blank">------- (138)</span>.
+    </div>`,
+    opts: ["economy", "economics", "economize", "economical"],
+    ans: 3,
+    exp: "Cần một tính từ đứng sau mạo từ 'a' và song song với 'safe' để bổ nghĩa cho danh từ 'way'. Tính từ <strong>economical</strong> = tiết kiệm, kinh tế."
+  },
+  {
+    n: 136,
+    text: `<div class="passage-box">
+      <strong>Gasgo Propane Tank Exchange</strong><br><br>
+      You have chosen a safe and <span class="q-blank">------- (135)</span> way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions <span class="q-blank active">------- (136)</span>. When your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. <span class="q-blank">------- (137)</span>. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device. Be sure to visit us again when you need a <span class="q-blank">------- (138)</span>.
+    </div>`,
+    opts: ["below", "finally", "sometimes", "hourly"],
+    ans: 0,
+    exp: "Cụm từ chỉ dẫn hướng dẫn quen thuộc: <strong>directions below</strong> (hướng dẫn bên dưới)."
+  },
+  {
+    n: 137,
+    text: `<div class="passage-box">
+      <strong>Gasgo Propane Tank Exchange</strong><br><br>
+      You have chosen a safe and <span class="q-blank">------- (135)</span> way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions <span class="q-blank">------- (136)</span>. When your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. <span class="q-blank active">------- (137)</span>. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device. Be sure to visit us again when you need a <span class="q-blank">------- (138)</span>.
+    </div>`,
+    opts: [
+      "Come again very soon.",
+      "It is warmer in the store.",
+      "Do not take it inside.",
+      "The tank is prefilled."
+    ],
+    ans: 2,
+    exp: "Xét tính an toàn phòng chống cháy nổ: bình ga rỗng phải để ngoài kệ màu xanh lá cây và **không được mang vào trong** cửa hàng (Do not take it inside)."
+  },
+  {
+    n: 138,
+    text: `<div class="passage-box">
+      <strong>Gasgo Propane Tank Exchange</strong><br><br>
+      You have chosen a safe and <span class="q-blank">------- (135)</span> way to obtain fuel for your stoves, grills, heaters, fireplaces, or other devices. Simply follow the directions <span class="q-blank">------- (136)</span>. When your tank runs out of propane, take it to our store and leave it on one of the clearly marked green shelves outside the store. <span class="q-blank">------- (137)</span>. Then, pay the cashier inside the store for a fresh tank of propane. Next, the cashier or another staff member will accompany you to the outdoor exchange area. The staff person will give you a full tank to take home and provide help if you have multiple tanks to carry. Follow the instructions on the tank to connect it to your device. Be sure to visit us again when you need a <span class="q-blank active">------- (138)</span>.
+    </div>`,
+    opts: ["model", "version", "heater", "replacement"],
+    ans: 3,
+    exp: "Danh từ <strong>replacement</strong> có nghĩa là bình ga thay thế (khi bình hiện tại lại hết ga)."
+  },
+
+  // Passage 3: 139 - 142
+  {
+    n: 139,
+    text: `<div class="passage-box">
+      <strong>To:</strong> Technicarn Enterprises Customers<br>
+      <strong>From:</strong> Technicarn Enterprises Customer Service<br>
+      <strong>Date:</strong> 10 September<br>
+      <strong>Subject:</strong> Serving You<br><br>
+      Dear Valued Customer:<br><br>
+      We want your <span class="q-blank active">------- (139)</span> with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features. Our new Web site provides answers to your questions 24 hours a day, <span class="q-blank">------- (140)</span> day of the year.<br><br>
+      On our home page, you can get information about system setup, or you can troubleshoot by visiting the Internet Issues or TV and Streaming Issues pages. <span class="q-blank">------- (141)</span>, you can find detailed information concerning account management, access, billing, and payment. <span class="q-blank">------- (142)</span>.<br><br>
+      Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.<br><br>
+      Best regards,<br>
+      The Technicarn Enterprises Customer Service Team
+    </div>`,
+    opts: ["experience", "experienced", "experiencing", "experiential"],
+    ans: 0,
+    exp: "Sau tính từ sở hữu 'your' và trước giới từ 'with' cần điền một danh từ làm chủ ngữ chính cho câu -> <strong>experience</strong> (trải nghiệm)."
+  },
+  {
+    n: 140,
+    text: `<div class="passage-box">
+      <strong>To:</strong> Technicarn Enterprises Customers<br>
+      <strong>From:</strong> Technicarn Enterprises Customer Service<br>
+      <strong>Date:</strong> 10 September<br>
+      <strong>Subject:</strong> Serving You<br><br>
+      Dear Valued Customer:<br><br>
+      We want your <span class="q-blank">------- (139)</span> with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features. Our new Web site provides answers to your questions 24 hours a day, <span class="q-blank active">------- (140)</span> day of the year.<br><br>
+      On our home page, you can get information about system setup, or you can troubleshoot by visiting the Internet Issues or TV and Streaming Issues pages. <span class="q-blank">------- (141)</span>, you can find detailed information concerning account management, access, billing, and payment. <span class="q-blank">------- (142)</span>.<br><br>
+      Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.<br><br>
+      Best regards,<br>
+      The Technicarn Enterprises Customer Service Team
+    </div>`,
+    opts: ["either", "both", "rather", "each"],
+    ans: 3,
+    exp: "Cấu trúc <strong>each + danh từ số ít</strong> (day) dùng để biểu đạt ý 'mỗi ngày trong năm'."
+  },
+  {
+    n: 141,
+    text: `<div class="passage-box">
+      <strong>To:</strong> Technicarn Enterprises Customers<br>
+      <strong>From:</strong> Technicarn Enterprises Customer Service<br>
+      <strong>Date:</strong> 10 September<br>
+      <strong>Subject:</strong> Serving You<br><br>
+      Dear Valued Customer:<br><br>
+      We want your <span class="q-blank">------- (139)</span> with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features. Our new Web site provides answers to your questions 24 hours a day, <span class="q-blank">------- (140)</span> day of the year.<br><br>
+      On our home page, you can get information about system setup, or you can troubleshoot by visiting the Internet Issues or TV and Streaming Issues pages. <span class="q-blank active">------- (141)</span>, you can find detailed information concerning account management, access, billing, and payment. <span class="q-blank">------- (142)</span>.<br><br>
+      Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.<br><br>
+      Best regards,<br>
+      The Technicarn Enterprises Customer Service Team
+    </div>`,
+    opts: ["Therefore", "Regardless", "For example", "Moreover"],
+    ans: 3,
+    exp: "Trạng từ liên kết <strong>Moreover</strong> (Hơn thế nữa) dùng để bổ sung thông tin bổ trợ mới cho nội dung phía trước."
+  },
+  {
+    n: 142,
+    text: `<div class="passage-box">
+      <strong>To:</strong> Technicarn Enterprises Customers<br>
+      <strong>From:</strong> Technicarn Enterprises Customer Service<br>
+      <strong>Date:</strong> 10 September<br>
+      <strong>Subject:</strong> Serving You<br><br>
+      Dear Valued Customer:<br><br>
+      We want your <span class="q-blank">------- (139)</span> with Technicarn Enterprises to be easy and enjoyable. To that end, we are pleased to announce our newly designed Web site, with enhanced customer-friendly features. Our new Web site provides answers to your questions 24 hours a day, <span class="q-blank">------- (140)</span> day of the year.<br><br>
+      On our home page, you can get information about system setup, or you can troubleshoot by visiting the Internet Issues or TV and Streaming Issues pages. <span class="q-blank">------- (141)</span>, you can find detailed information concerning account management, access, billing, and payment. <span class="q-blank active">------- (142)</span>.<br><br>
+      Please explore the new Web site at your earliest convenience: www.technicarnenterprises.com. As always, thank you for allowing us to serve you.<br><br>
+      Best regards,<br>
+      The Technicarn Enterprises Customer Service Team
+    </div>`,
+    opts: [
+      "We also need to inform you that your payment is five days past due.",
+      "We recommend that you purchase all related accessories in our retail store.",
+      "If you get an error message, disconnect from the Internet and try again.",
+      "If you cannot find what you need online, simply call our support number."
+    ],
+    ans: 3,
+    exp: "Dựa vào logic mạch văn, câu tiếp nối bổ sung ý là nếu khách hàng không tự tìm thấy thông tin trên trang web trực tuyến thì có thể **gọi điện trực tiếp tới số điện thoại hỗ trợ**."
+  },
+
+  // Passage 4: 143 - 146
+  {
+    n: 143,
+    text: `<div class="passage-box">
+      <strong>Garner City Transport Cares About the Environment</strong><br><br>
+      Beginning May 1, the sale and use of paper tickets and transit passes will be <span class="q-blank active">------ (143)</span> on all Garner City Transport bus and subway lines. This change applies to single-ride tickets <span class="q-blank">------ (144)</span> to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter. Riders can download the free Garner City Transport app. With the app, they can add money to their accounts, purchase tickets, plan <span class="q-blank">------ (145)</span>, and track arrival and departure times. Alternatively, passengers can purchase a rechargeable transit card at any station. <span class="q-blank">------ (146)</span>. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.
+    </div>`,
+    opts: ["enlarged", "discontinued", "accessible", "refreshed"],
+    ans: 1,
+    exp: "Xét về mặt nghĩa: Việc bán vé giấy sẽ bị **ngừng hoạt động/ngừng sản xuất** (discontinued) để chuyển sang kỹ thuật số nhằm bảo vệ môi trường."
+  },
+  {
+    n: 144,
+    text: `<div class="passage-box">
+      <strong>Garner City Transport Cares About the Environment</strong><br><br>
+      Beginning May 1, the sale and use of paper tickets and transit passes will be <span class="q-blank">------ (143)</span> on all Garner City Transport bus and subway lines. This change applies to single-ride tickets <span class="q-blank active">------ (144)</span> to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter. Riders can download the free Garner City Transport app. With the app, they can add money to their accounts, purchase tickets, plan <span class="q-blank">------ (145)</span>, and track arrival and departure times. Alternatively, passengers can purchase a rechargeable transit card at any station. <span class="q-blank">------ (146)</span>. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.
+    </div>`,
+    opts: ["sharing", "but", "except", "as well as"],
+    ans: 3,
+    exp: "Cấu trúc so sánh tương đương: <strong>as well as</strong> = cũng như là (quy định này áp dụng cho cả vé lẻ lẫn vé tuần/tháng)."
+  },
+  {
+    n: 145,
+    text: `<div class="passage-box">
+      <strong>Garner City Transport Cares About the Environment</strong><br><br>
+      Beginning May 1, the sale and use of paper tickets and transit passes will be <span class="q-blank">------ (143)</span> on all Garner City Transport bus and subway lines. This change applies to single-ride tickets <span class="q-blank">------ (144)</span> to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter. Riders can download the free Garner City Transport app. With the app, they can add money to their accounts, purchase tickets, plan <span class="q-blank active">------ (145)</span>, and track arrival and departure times. Alternatively, passengers can purchase a rechargeable transit card at any station. <span class="q-blank">------ (146)</span>. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.
+    </div>`,
+    opts: ["routes", "responses", "software", "careers"],
+    ans: 0,
+    exp: "Ứng dụng giao thông công cộng cho phép người dùng **lên kế hoạch tuyến đường/lộ trình di chuyển** (plan routes)."
+  },
+  {
+    n: 146,
+    text: `<div class="passage-box">
+      <strong>Garner City Transport Cares About the Environment</strong><br><br>
+      Beginning May 1, the sale and use of paper tickets and transit passes will be <span class="q-blank">------ (143)</span> on all Garner City Transport bus and subway lines. This change applies to single-ride tickets <span class="q-blank">------ (144)</span> to weekly and monthly passes. Eliminating paper benefits the environment and leads to less litter. Riders can download the free Garner City Transport app. With the app, they can add money to their accounts, purchase tickets, plan <span class="q-blank">------ (145)</span>, and track arrival and departure times. Alternatively, passengers can purchase a rechargeable transit card at any station. <span class="q-blank active">------ (146)</span>. Value can be added to the card via the Garner City Transport Web site at www.garnercitytransport.org.
+    </div>`,
+    opts: [
+      "People often use credit cards to purchase meals during the flight.",
+      "Many people like public transportation because it is inexpensive.",
+      "The durable cards are made from recycled materials.",
+      "There was a small price increase last month."
+    ],
+    ans: 2,
+    exp: "Đoạn văn đang thảo luận về chiếc thẻ nhựa nạp tiền thay vé giấy. Câu C bổ trợ thông tin là **những chiếc thẻ bền bỉ này được làm từ vật liệu tái chế** (The durable cards are made from recycled materials) để hỗ trợ môi trường."
+  }
 ];
 
 // Data normalization
@@ -934,6 +1168,7 @@ function shuffle(arr) {
 
 function shuffleAll() {
   const shuffledPool = shuffle(originalQuestions).map(q => {
+    // Preserve the HTML classes for Part 6 when shuffling options:
     const indexed = q.options.map((o, i) => ({ text: o, orig: i }));
     shuffle(indexed);
     const newAnswer = indexed.findIndex(x => x.orig === q.answer);
@@ -975,7 +1210,7 @@ function renderDots() {
   questions.forEach((q, idx) => {
     const btn = document.createElement('div');
     btn.className = 'dot-btn';
-    btn.textContent = idx + 1;
+    btn.textContent = q.id; // Using exact TOEIC Q numbers for Part 6 (e.g., 131, 132...)
     btn.id = 'dotBtn_' + idx;
     btn.onclick = () => {
       current = idx;
@@ -1036,7 +1271,7 @@ function renderQuestion() {
 
   document.getElementById('qBadge').textContent = `Câu ${q.id}`;
   
-  const formattedText = q.text.replace(/_____|-------+/g, '<span class="q-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+  const formattedText = q.text.includes('passage-box') ? q.text : q.text.replace(/_____|-------+/g, '<span class="q-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
   document.getElementById('qText').innerHTML = formattedText;
   
   const list = document.getElementById('optionsList');
@@ -1178,6 +1413,7 @@ function showReviewList() {
     const ua = answers[q.id];
     const isCorrect = ua === q.answer;
     
+    // For review list in Part 6, show a simplified review item:
     html += `
       <div class="review-item">
         <div class="review-header">
@@ -1185,9 +1421,6 @@ function showReviewList() {
           <span class="review-status-tag ${isCorrect ? 'correct' : 'wrong'}">
             ${isCorrect ? '✓ Đúng' : '✗ Sai'}
           </span>
-        </div>
-        <div class="q-text" style="font-size: 15px; font-weight:500;">
-          ${q.text.replace(/_____|-------+/g, '<u><strong>' + q.options[q.answer] + '</strong></u>')}
         </div>
         <div class="review-ans-box">
           ${ua !== undefined ? `Bạn chọn: <span style="font-weight: 600; color: ${isCorrect ? 'var(--correct-text)' : 'var(--wrong-text)'}">(${labels[ua]}) ${q.options[ua]}</span><br>` : ''}
@@ -1217,7 +1450,7 @@ window.addEventListener('DOMContentLoaded', () => {
     'Practice8.html': 'menu_p8'
   };
   const filename = window.location.pathname.split('/').pop();
-  const activeMenuId = pageMap[filename] || 'menu_p1';
+  const activeMenuId = pageMap[filename] || 'menu_p7';
   const activeItem = document.getElementById(activeMenuId);
   if (activeItem) activeItem.classList.add('active');
   
