@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>TOEIC Practice 2 — Câu 101–130</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0b10;
+  --surface: #11131a;
+  --surface-card: #171923;
+  --surface-hover: #1f2231;
+  --border: #222635;
+  --text: #f3f4f6;
+  --text-muted: #9ca3af;
+  --primary: #6366f1;
+  --primary-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --primary-light: rgba(99, 102, 241, 0.1);
+  --correct: #10b981;
+  --correct-bg: rgba(16, 185, 129, 0.08);
+  --correct-border: #34d399;
+  --correct-text: #34d399;
+  --wrong: #ef4444;
+  --wrong-bg: rgba(239, 68, 68, 0.08);
+  --wrong-border: #f87171;
+  --wrong-text: #f87171;
+  --accent: #f59e0b;
+  --accent-bg: rgba(245, 158, 11, 0.08);
+  --accent-text: #fbbf24;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.light {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-card: #ffffff;
+  --surface-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --primary: #4f46e5;
+  --primary-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+  --primary-light: rgba(79, 70, 229, 0.08);
+  --correct: #10b981;
+  --correct-bg: #ecfdf5;
+  --correct-border: #34d399;
+  --correct-text: #047857;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --wrong-border: #f87171;
+  --wrong-text: #b91c1c;
+  --accent: #d97706;
+  --accent-bg: #fef3c7;
+  --accent-text: #92400e;
+  --shadow: rgba(15, 23, 42, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 45;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  height: 60px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+header h1 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+
+.score-badge {
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
+  transition: var(--transition);
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.menu-btn:hover {
+  background: var(--surface-hover);
+}
+
+.progress-container {
+  height: 4px;
+  background: var(--border);
+  width: 100%;
+  position: sticky;
+  top: 60px;
+  z-index: 45;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--primary-gradient);
+  width: 0%;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot-scroll-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.dot-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.dot-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: var(--transition);
+  background: var(--surface-card);
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+}
+.dot-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.dot-btn.active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+.dot-btn.answered {
+  background: var(--surface-hover);
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+.dot-btn.correct {
+  background: var(--correct-bg);
+  border-color: var(--correct-border);
+  color: var(--correct-text);
+  font-weight: 700;
+}
+.dot-btn.wrong {
+  background: var(--wrong-bg);
+  border-color: var(--wrong-border);
+  color: var(--wrong-text);
+  font-weight: 700;
+}
+
+.container {
+  flex: 1;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 16px 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: 0 4px 20px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.q-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.q-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 4px 10px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.status-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 99px;
+  display: none;
+}
+.status-badge.correct {
+  display: inline-block;
+  background: var(--correct-bg);
+  color: var(--correct-text);
+}
+.status-badge.wrong {
+  display: inline-block;
+  background: var(--wrong-bg);
+  color: var(--wrong-text);
+}
+
+.q-text {
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 500;
+  color: var(--text);
+  word-wrap: break-word;
+}
+.q-blank {
+  border-bottom: 2px dashed var(--primary);
+  color: var(--primary);
+  font-weight: 700;
+  padding: 0 6px;
+  display: inline-block;
+  min-width: 60px;
+  text-align: center;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 15px;
+  font-weight: 500;
+  min-height: 52px;
+}
+.option-item:hover:not(.disabled) {
+  border-color: var(--primary);
+  background: var(--surface-hover);
+}
+.option-item.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+.option-item.correct {
+  border-color: var(--correct-border);
+  background: var(--correct-bg);
+  color: var(--correct-text);
+  font-weight: 600;
+}
+.option-item.wrong {
+  border-color: var(--wrong-border);
+  background: var(--wrong-bg);
+  color: var(--wrong-text);
+}
+.option-item.disabled {
+  cursor: default;
+}
+
+.opt-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  background: var(--surface-card);
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+.option-item.selected .opt-circle {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+.option-item.correct .opt-circle {
+  border-color: var(--correct-border);
+  background: var(--correct);
+  color: #fff;
+}
+.option-item.wrong .opt-circle {
+  border-color: var(--wrong-border);
+  background: var(--wrong);
+  color: #fff;
+}
+
+.explain-box {
+  background: var(--accent-bg);
+  border-left: 4px solid var(--accent);
+  color: var(--accent-text);
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.6;
+  display: none;
+  animation: slideDown 0.25s ease-out;
+}
+.explain-box.show {
+  display: block;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 35;
+  box-shadow: 0 -4px 15px var(--shadow);
+}
+.btn-nav {
+  flex: 1;
+  height: 44px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid var(--border);
+  background: var(--surface-card);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-nav:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.btn-nav:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.btn-primary {
+  background: var(--primary-gradient);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+  color: #fff;
+}
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 290px;
+  max-width: 85%;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  z-index: 101;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 0 35px var(--shadow);
+}
+.drawer.open {
+  transform: translateX(0);
+}
+.drawer-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+.close-btn:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+.drawer-menu {
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+}
+.drawer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  transition: var(--transition);
+  border: 1.5px solid transparent;
+}
+.drawer-item:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+.drawer-item.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: rgba(99, 102, 241, 0.15);
+  font-weight: 600;
+}
+.drawer-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.theme-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.theme-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: var(--border);
+  border-radius: 34px;
+  transition: 0.3s;
+}
+.theme-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+input:checked + .theme-slider {
+  background-color: var(--primary);
+}
+input:checked + .theme-slider:before {
+  transform: translateX(22px);
+}
+
+.result-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.4s ease;
+}
+.result-title {
+  font-size: 26px;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.result-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.result-circle-container {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+}
+.result-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.result-stat-box {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  padding: 10px 6px;
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.result-stat-num {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: monospace;
+}
+.result-stat-lbl {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+.review-item {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.review-status-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.review-status-tag.correct {
+  background: var(--correct-bg);
+  color: var(--correct-text);
+}
+.review-status-tag.wrong {
+  background: var(--wrong-bg);
+  color: var(--wrong-text);
+}
+.review-ans-box {
+  font-size: 14px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  line-height: 1.7;
+}
+
+.hidden {
+  display: none !important;
+}
+</style>
+</head>
+<body>
+
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer(false)"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <span style="font-size: 16px; font-weight: 700; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.5px;">TOEIC MASTER</span>
+    <button class="close-btn" onclick="toggleDrawer(false)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div style="padding: 16px 16px 4px; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">DANH MỤC LUYỆN TẬP</div>
+  <nav class="drawer-menu">
+    <a href="index.html" class="drawer-item" id="menu_home">
+      <span>🏠 Trang chủ</span>
+    </a>
+    <a href="Practice1.html" class="drawer-item" id="menu_p1">
+      <span>Practice 1</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 1–30</span>
+    </a>
+    <a href="Practice2.html" class="drawer-item" id="menu_p2">
+      <span>Practice 2</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 101–130</span>
+    </a>
+    <a href="Practice3.html" class="drawer-item" id="menu_p3">
+      <span>Practice 3</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 101–129</span>
+    </a>
+    <a href="Practice4.html" class="drawer-item" id="menu_p4">
+      <span>Practice 4</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 101–130</span>
+    </a>
+    <a href="Pratice5.html" class="drawer-item" id="menu_p5">
+      <span>Practice 5</span>
+      <span style="font-size: 11px; background: var(--border); padding: 2px 8px; border-radius: 99px; color: var(--text-muted);">Câu 101–130</span>
+    </a>
+  </nav>
+  <div class="drawer-footer">
+    <div class="theme-row">
+      <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">Giao diện tối</span>
+      <label class="theme-switch">
+        <input type="checkbox" id="themeToggle" onchange="handleThemeChange(this)">
+        <span class="theme-slider"></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div style="display: flex; align-items: center; gap: 8px;">
+    <button class="menu-btn" onclick="toggleDrawer(true)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <h1 id="headerTitle">TOEIC Practice 2</h1>
+  </div>
+  <span class="score-badge" id="scoreBadge">0 / 30</span>
+</header>
+
+<div class="progress-container">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<div class="dot-scroll-bar" id="dotScrollbar"></div>
+
+<div class="container">
+  <div id="quizView" class="card">
+    <div class="q-badge-row">
+      <span class="q-badge" id="qBadge">Câu 101</span>
+      <span class="status-badge" id="statusBadge">✓ Chính xác</span>
+    </div>
+    
+    <div class="q-text" id="qText"></div>
+    
+    <div class="options-list" id="optionsList"></div>
+    
+    <div class="explain-box" id="explainBox"></div>
+  </div>
+
+  <div id="resultView" class="result-card hidden">
+    <div class="result-title">Kết Quả Hoàn Thành</div>
+    <div class="result-sub" id="resultMessage">Tỉ lệ đúng: 0%</div>
+    
+    <div class="result-circle-container">
+      <svg width="130" height="130" viewBox="0 0 140 140" style="transform: rotate(-90deg);">
+        <circle cx="70" cy="70" r="60" stroke="var(--border)" stroke-width="10" fill="transparent"/>
+        <circle cx="70" cy="70" r="60" stroke="url(#primaryGrad)" stroke-width="10" fill="transparent" stroke-dasharray="377" stroke-dashoffset="377" id="resultCircle" style="transition: stroke-dashoffset 1.5s ease-out; stroke-linecap: round;"/>
+        <defs>
+          <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6366f1" stop-opacity="1" />
+            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="1" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;">
+        <span id="resultScore" style="font-size: 26px; font-weight: 700; color: var(--text);">0/30</span>
+        <span id="resultPercent" style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 4px;">0%</span>
+      </div>
+    </div>
+
+    <div class="result-stats-grid">
+      <div class="result-stat-box">
+        <div class="result-stat-num" id="statTotal" style="color: var(--primary);">30</div>
+        <div class="result-stat-lbl">Tổng số</div>
+      </div>
+      <div class="result-stat-box">
+        <div class="result-stat-num" id="statCorrect" style="color: var(--correct-text);">0</div>
+        <div class="result-stat-lbl">Đúng ✓</div>
+      </div>
+      <div class="result-stat-box">
+        <div class="result-stat-num" id="statWrong" style="color: var(--wrong-text);">0</div>
+        <div class="result-stat-lbl">Sai ✗</div>
+      </div>
+    </div>
+    
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+      <button class="btn-nav btn-primary" onclick="retryAll()" style="width: 100%;">🔀 Làm lại (xáo trộn)</button>
+      <button class="btn-nav" id="retryWrongBtn" onclick="retryWrong()" style="width: 100%; border-color: var(--wrong-border); color: var(--wrong-text); background: var(--wrong-bg);">🔁 Ôn câu sai</button>
+      <button class="btn-nav" onclick="showReviewList()" style="width: 100%;">📋 Xem chi tiết đáp án</button>
+    </div>
+  </div>
+  
+  <div id="reviewSection" class="review-section hidden"></div>
+</div>
+
+<div class="bottom-nav">
+  <button class="btn-nav" id="prevBtn" onclick="navigate(-1)">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    Trước
+  </button>
+  <div class="nav-info" id="navInfo">Câu 1 / 30</div>
+  <button class="btn-nav" id="nextBtn" onclick="navigate(1)">
+    Tiếp
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <button class="btn-nav btn-primary hidden" id="submitBtn" onclick="showResult()">Nộp bài</button>
+</div>
+
+<script>
+const QUESTIONS_RAW = [
+  { n:101, text:"Last week, three staff members _____ at the local library's book sale.", opts:["volunteer","voluntary","volunteered","volunteering"], ans:2, exp:"Dấu hiệu quá khứ đơn: 'Last week'. Chủ ngữ 'staff members' chủ động → cần 'volunteered' (V-ed). (A) hiện tại; (B) tính từ; (D) bị động — sai." },
+  { n:102, text:"In April, prices are expected to drop _____ 20 percent.", opts:["with","on","since","by"], ans:3, exp:"Cụm cố định: 'drop BY + số %/số tiền' = giảm xuống. (A)(B)(C) không đi với 'drop' để chỉ mức giảm." },
+  { n:103, text:"The project management software allows staff to handle many tasks by _____.", opts:["themselves","them","they","theirs"], ans:0, exp:"Cấu trúc: 'by oneself' = tự mình. Chủ ngữ số nhiều (staff) → 'by themselves'. (B)(C)(D) không hợp cấu trúc này." },
+  { n:104, text:"Local manufacturers have _____ shipping times by hiring external shipping companies.", opts:["attempted","reduced","weakened","finished"], ans:1, exp:"Xét nghĩa: thuê công ty vận chuyển ngoài để 'giảm' thời gian giao hàng. 'Reduced' (giảm) đúng nhất. (A)(C)(D) không hợp nghĩa." },
+  { n:105, text:"Gramwell Corporation may charge an _____ fee for last month's work.", opts:["add","adding","additionally","additional"], ans:3, exp:"Cần tính từ trước danh từ 'fee'. 'Additional' (thêm, bổ sung) là tính từ đúng. (A) động từ; (B) V-ing; (C) trạng từ." },
+  { n:106, text:"Ms. Kang prefers to complete _____ current project before transferring to the finance department.", opts:["herself","she","her","hers"], ans:2, exp:"Cần tính từ sở hữu trước 'current project'. Ms. Kang → 'her'. (A) đại từ phản thân; (B) chủ ngữ; (D) đại từ sở hữu độc lập." },
+  { n:107, text:"There are _____ criteria that must be met for a password to be changed successfully.", opts:["specific","to specify","specify","specifies"], ans:0, exp:"Cần tính từ bổ nghĩa cho danh từ 'criteria'. 'Specific' (cụ thể) là tính từ đúng. (B)(C)(D) đều là dạng động từ." },
+  { n:108, text:"To assist the costume designers in preparing for the film, fabric samples can be sent to the _____ designer.", opts:["leader","leads","led","lead"], ans:3, exp:"'Lead designer' = nhà thiết kế trưởng — cụm danh từ ghép phổ biến. 'Lead' (trưởng) đứng trước danh từ như tính từ. (A)(B)(C) không hợp." },
+  { n:109, text:"The product presentation has been fully rehearsed, so it can be _____ any day next week.", opts:["film","filmed","films","to film"], ans:1, exp:"Cấu trúc bị động: 'can be + V3'. Buổi thuyết trình được quay phim → 'filmed'. (A)(C)(D) không tạo được bị động đúng." },
+  { n:110, text:"The new logo is part of a comprehensive effort to _____ the brand's identity and appeal to younger consumers.", opts:["remind","refer","refresh","repeat"], ans:2, exp:"Xét nghĩa: nỗ lực để 'làm mới' bản sắc thương hiệu. 'Refresh' (làm mới) phù hợp nhất. (A)(B)(D) không hợp ngữ cảnh." },
+  { n:111, text:"The latest sport utility vehicle from Bondon Automotive can carry eight people _____.", opts:["comfortable","comfort","comfortably","comforting"], ans:2, exp:"Cần trạng từ bổ nghĩa cho động từ 'carry'. 'Comfortably' (một cách thoải mái). (A) tính từ; (B) danh từ; (D) tính từ/V-ing." },
+  { n:112, text:"_____ deciding to replace the food-service provider, the management team conducted a survey of all employees.", opts:["Before","Unless","Whether","Except"], ans:0, exp:"'Before + V-ing' = trước khi làm gì. Ban quản lý tiến hành khảo sát TRƯỚC khi quyết định thay nhà cung cấp. (B)(C)(D) không hợp cấu trúc." },
+  { n:113, text:"Although Mr. Cho was _____ about transferring to the Houston office, he is now working there confidently and productively.", opts:["hesitate","hesitant","hesization","hesitated"], ans:1, exp:"Sau 'was' cần tính từ. 'Hesitant' (do dự, ngần ngại) là tính từ đúng. (A) động từ; (C) danh từ; (D) V-ed không hợp sau 'was' ở đây." },
+  { n:114, text:"The personnel office should be contacted about unpaid leave _____ supervisors cannot approve it.", opts:["as","either","like","instead"], ans:0, exp:"'As' (vì, bởi vì) là liên từ chỉ lý do — vì giám sát viên không thể phê duyệt. (B)(C)(D) không tạo quan hệ nguyên nhân phù hợp." },
+  { n:115, text:"Yesterday the board voted to _____ with discussions about acquiring Atlasburg Financial.", opts:["proceed","proceeded","proceeding","proceeds"], ans:0, exp:"'Vote to + V nguyên thể' = bỏ phiếu để làm gì. 'Proceed' là động từ nguyên thể đúng. (B)(C)(D) không hợp sau 'to'." },
+  { n:116, text:"Robles Corporation encourages employees to work toward a _____ goal, rather than pursuing individual interests.", opts:["common","regular","usual","plain"], ans:0, exp:"'Common goal' = mục tiêu chung — cụm phổ biến trong môi trường doanh nghiệp. (B)(C)(D) không diễn đạt được ý 'mục tiêu chung của tập thể'." },
+  { n:117, text:"The _____ in the brochure are an inaccurate representation of what guests staying at the resort can expect to find.", opts:["image","images","imaged","imaging"], ans:1, exp:"Động từ 'are' (số nhiều) → chủ ngữ phải là danh từ số nhiều. 'Images' (những hình ảnh). (A) số ít; (C)(D) dạng động từ." },
+  { n:118, text:"Current employees interested in the new managerial position should _____ about the internal hiring process.", opts:["provide","inquire","evaluate","control"], ans:1, exp:"'Inquire about' = hỏi thăm về. Nhân viên nên hỏi về quy trình tuyển dụng nội bộ. (A)(C)(D) không hợp nghĩa trong ngữ cảnh này." },
+  { n:119, text:"Colleagues in the accounting department consider the matter closed and _____ cannot provide more input.", opts:["large","consequently","very","anyone"], ans:1, exp:"'Consequently' (do đó) là trạng từ liên kết chỉ kết quả — vì xem là đã giải quyết nên không thể cung cấp thêm ý kiến. (A)(C)(D) không hợp." },
+  { n:120, text:"The CEO hopes that the consultant's advice will ultimately _____ higher profits for the company.", opts:["yield","submit","invent","resolve"], ans:0, exp:"'Yield profits' = mang lại lợi nhuận — cụm phổ biến trong kinh doanh. (B)(C)(D) không đi với 'profits' một cách tự nhiên." },
+  { n:121, text:"A team of experts is reviewing the contract from a financial _____ so please do not share it with the client yet.", opts:["perspective","belief","movement","proportion"], ans:0, exp:"'From a financial perspective' = từ góc độ tài chính — cụm chuẩn. (B)(C)(D) không tạo được cụm có nghĩa trong ngữ cảnh này." },
+  { n:122, text:"To prevent noise that is distracting to performers, the lobby gift shop is _____ open during performances.", opts:["almost","even","never","soon"], ans:2, exp:"Xét nghĩa: cửa hàng quà lưu niệm KHÔNG BAO GIỜ mở cửa trong lúc biểu diễn để tránh tiếng ồn. 'Never' đúng. (A)(B)(D) không hợp nghĩa." },
+  { n:123, text:"Zuper Brite lightbulbs _____ reduce energy consumption when compared with standard incandescent lightbulbs.", opts:["great","greater","greatest","greatly"], ans:3, exp:"Cần trạng từ bổ nghĩa cho động từ 'reduce'. 'Greatly' (giảm đáng kể). (A) tính từ; (B)(C) dạng so sánh của tính từ." },
+  { n:124, text:"The airport's proposed _____ project will include two remodeled terminals and an updated transportation system.", opts:["encouragement","modernization","assistant","importance"], ans:1, exp:"Xét nghĩa: dự án cải tạo sân bay gồm nhà ga và hệ thống giao thông. 'Modernization' (hiện đại hóa) phù hợp. (A)(C)(D) không hợp." },
+  { n:125, text:"Market Research is the _____ of the company concerned with better understanding our clients' needs.", opts:["divisional","divisible","division","divide"], ans:2, exp:"Cần danh từ làm vị ngữ sau 'is'. 'Division' (bộ phận/phòng ban) — 'Market Research is the division of the company'. (A) tính từ; (B) tính từ; (D) động từ." },
+  { n:126, text:"Mr. Fanaka was so pleased by the quarterly performance report _____ he canceled the weekly updates.", opts:["in case","which","that","seldom"], ans:2, exp:"Cấu trúc: 'so + adj + that + mệnh đề' = đến mức mà. 'So pleased... that he canceled' = hài lòng đến mức hủy báo cáo tuần. (A)(B)(D) không hợp cấu trúc." },
+  { n:127, text:"Quincycom's price increase is justifiable _____ there is an improvement in the quality of the Internet service we receive.", opts:["whereas","likewise","because of","only if"], ans:3, exp:"'Only if' = chỉ khi nào — tăng giá chỉ có thể chấp nhận được NẾU chất lượng cải thiện. (A) tương phản; (B) tương tự; (C) cần danh từ, không cần mệnh đề." },
+  { n:128, text:"The chart attached to this e-mail presents a _____ of Vivasyco's latest smartphone with a model from Eustace Tech.", opts:["comparison","pronouncement","guideline","publicity"], ans:0, exp:"'A comparison of A with B' = sự so sánh giữa A và B — cụm chuẩn khi mô tả nội dung biểu đồ. (B)(C)(D) không hợp nghĩa." },
+  { n:129, text:"It is the catering director's _____ to inform the chef of the intended menu well in advance of the event.", opts:["obliged","obligated","obligatory","obligation"], ans:3, exp:"Sau tính từ sở hữu 'director's' cần danh từ. 'Obligation' (nghĩa vụ) là danh từ đúng. (A)(B) tính từ; (C) tính từ — không thể đứng sau sở hữu cách như chủ ngữ." },
+  { n:130, text:"Given her experience in health care, Ms. Chung is _____ well suited to manage the company's wellness program.", opts:["formerly","expectantly","particularly","avoidably"], ans:2, exp:"Cần trạng từ bổ nghĩa cho 'well suited'. 'Particularly' (đặc biệt) — 'particularly well suited' = đặc biệt phù hợp. (A)(B)(D) không hợp nghĩa." },
+];
+
+// Data normalization
+let RAW_POOL = [];
+if (typeof QUESTIONS_RAW !== 'undefined') {
+  RAW_POOL = QUESTIONS_RAW;
+} else if (typeof BANK !== 'undefined') {
+  RAW_POOL = BANK;
+} else if (typeof RAW_QUESTIONS !== 'undefined') {
+  RAW_POOL = RAW_QUESTIONS;
+}
+
+const originalQuestions = RAW_POOL.map((q, idx) => {
+  return {
+    id: q.n || q.num || q.id || (idx + 1),
+    text: q.text,
+    options: q.opts || q.options,
+    answer: q.ans !== undefined ? q.ans : q.answer,
+    explain: q.exp || q.explain || ""
+  };
+});
+
+let questions = [];
+let answers = {};
+let submitted = false;
+let current = 0;
+
+function initTheme() {
+  const isLight = localStorage.getItem('theme') === 'light';
+  if (isLight) {
+    document.documentElement.classList.add('light');
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) toggle.checked = false;
+  } else {
+    document.documentElement.classList.remove('light');
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) toggle.checked = true;
+  }
+}
+
+function handleThemeChange(checkbox) {
+  if (checkbox.checked) {
+    document.documentElement.classList.remove('light');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.classList.add('light');
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+function toggleDrawer(open) {
+  document.getElementById('drawerOverlay').classList.toggle('open', open);
+  document.getElementById('drawer').classList.toggle('open', open);
+}
+
+function initQuiz(poolToUse) {
+  questions = [...poolToUse];
+  answers = {};
+  submitted = false;
+  current = 0;
+
+  document.getElementById('quizView').classList.remove('hidden');
+  document.getElementById('resultView').classList.add('hidden');
+  document.getElementById('reviewSection').classList.add('hidden');
+  document.getElementById('submitBtn').classList.add('hidden');
+
+  renderDots();
+  renderQuestion();
+  updateProgress();
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function shuffleAll() {
+  const shuffledPool = shuffle(originalQuestions).map(q => {
+    const indexed = q.options.map((o, i) => ({ text: o, orig: i }));
+    shuffle(indexed);
+    const newAnswer = indexed.findIndex(x => x.orig === q.answer);
+    return {
+      ...q,
+      options: indexed.map(x => x.text),
+      answer: newAnswer
+    };
+  });
+  initQuiz(shuffledPool);
+  toggleDrawer(false);
+}
+
+function restartQuiz() {
+  initQuiz(originalQuestions);
+  toggleDrawer(false);
+}
+
+function retryWrong() {
+  const wrongPool = questions.filter(q => {
+    const ua = answers[q.id];
+    return ua !== undefined && ua !== q.answer;
+  });
+  
+  if (wrongPool.length === 0) {
+    alert("Tuyệt vời! Bạn không làm sai câu nào!");
+    return;
+  }
+  initQuiz(wrongPool);
+}
+
+function retryAll() {
+  shuffleAll();
+}
+
+function renderDots() {
+  const bar = document.getElementById('dotScrollbar');
+  bar.innerHTML = '';
+  questions.forEach((q, idx) => {
+    const btn = document.createElement('div');
+    btn.className = 'dot-btn';
+    btn.textContent = idx + 1;
+    btn.id = 'dotBtn_' + idx;
+    btn.onclick = () => {
+      current = idx;
+      renderQuestion();
+    };
+    bar.appendChild(btn);
+  });
+}
+
+function updateDotsState() {
+  questions.forEach((q, idx) => {
+    const btn = document.getElementById('dotBtn_' + idx);
+    if (!btn) return;
+    
+    let cls = 'dot-btn';
+    const ua = answers[q.id];
+    
+    if (idx === current) {
+      cls += ' active';
+    }
+    
+    if (submitted) {
+      if (ua === q.answer) cls += ' correct';
+      else if (ua !== undefined) cls += ' wrong';
+    } else {
+      if (ua !== undefined) cls += ' answered';
+    }
+    
+    btn.className = cls;
+  });
+  
+  const activeBtn = document.getElementById('dotBtn_' + current);
+  if (activeBtn) {
+    const container = document.getElementById('dotScrollbar');
+    const scrollLeft = activeBtn.offsetLeft - (container.offsetWidth / 2) + (activeBtn.offsetWidth / 2);
+    container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+  }
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  const ua = answers[q.id];
+  const isCorrect = ua === q.answer;
+  
+  document.getElementById('navInfo').textContent = `Câu ${current + 1} / ${questions.length}`;
+  
+  const statusBadge = document.getElementById('statusBadge');
+  statusBadge.className = 'status-badge';
+  if (submitted || ua !== undefined) {
+    if (isCorrect) {
+      statusBadge.textContent = '✓ Chính xác';
+      statusBadge.classList.add('correct');
+    } else if (ua !== undefined) {
+      statusBadge.textContent = '✗ Sai rồi';
+      statusBadge.classList.add('wrong');
+    }
+  }
+
+  document.getElementById('qBadge').textContent = `Câu ${q.id}`;
+  
+  const formattedText = q.text.replace(/_____|-------+/g, '<span class="q-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+  document.getElementById('qText').innerHTML = formattedText;
+  
+  const list = document.getElementById('optionsList');
+  list.innerHTML = '';
+  const labels = ['A', 'B', 'C', 'D'];
+  
+  q.options.forEach((opt, idx) => {
+    const div = document.createElement('div');
+    let cls = 'option-item';
+    
+    const isAnswered = ua !== undefined;
+    const revealed = submitted || isAnswered;
+    
+    if (revealed) {
+      cls += ' disabled';
+      if (idx === q.answer) cls += ' correct';
+      else if (idx === ua) cls += ' wrong';
+    } else if (ua === idx) {
+      cls += ' selected';
+    }
+    
+    div.className = cls;
+    div.innerHTML = `
+      <div class="opt-circle">${labels[idx]}</div>
+      <div class="opt-text">${opt}</div>
+    `;
+    
+    if (!revealed) {
+      div.onclick = () => selectOption(idx);
+    }
+    list.appendChild(div);
+  });
+  
+  const expBox = document.getElementById('explainBox');
+  const showExp = submitted || ua !== undefined;
+  if (showExp && q.explain) {
+    expBox.innerHTML = `💡 <strong>Giải thích:</strong> ${q.explain}`;
+    expBox.classList.add('show');
+  } else {
+    expBox.classList.remove('show');
+  }
+  
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === questions.length - 1;
+  
+  const allAnswered = questions.every(x => answers[x.id] !== undefined);
+  const submitBtn = document.getElementById('submitBtn');
+  if (allAnswered && !submitted) {
+    submitBtn.classList.remove('hidden');
+  } else {
+    submitBtn.classList.add('hidden');
+  }
+  
+  updateDotsState();
+}
+
+function selectOption(idx) {
+  const q = questions[current];
+  answers[q.id] = idx;
+  renderQuestion();
+  updateProgress();
+  
+  if (idx === q.answer) {
+    setTimeout(() => {
+      if (current < questions.length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        const allAnswered = questions.every(x => answers[x.id] !== undefined);
+        if (allAnswered) {
+          showResult();
+        }
+      }
+    }, 900);
+  }
+}
+
+function navigate(dir) {
+  current = Math.max(0, Math.min(questions.length - 1, current + dir));
+  renderQuestion();
+}
+
+function updateProgress() {
+  const answeredCount = questions.filter(q => answers[q.id] !== undefined).length;
+  const pct = questions.length > 0 ? (answeredCount / questions.length * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  
+  const correctCount = questions.filter(q => answers[q.id] === q.answer).length;
+  document.getElementById('scoreBadge').textContent = `${correctCount} / ${questions.length}`;
+}
+
+function showResult() {
+  submitted = true;
+  const correct = questions.filter(q => answers[q.id] === q.answer).length;
+  const wrong = questions.length - correct;
+  const pct = questions.length > 0 ? Math.round(correct / questions.length * 100) : 0;
+  
+  document.getElementById('quizView').classList.add('hidden');
+  document.getElementById('resultView').classList.remove('hidden');
+  
+  document.getElementById('resultScore').textContent = `${correct}/${questions.length}`;
+  document.getElementById('resultPercent').textContent = `${pct}%`;
+  
+  const circ = document.getElementById('resultCircle');
+  const offset = 377 - (377 * pct / 100);
+  setTimeout(() => {
+    circ.style.strokeDashoffset = offset;
+  }, 100);
+  
+  let msg = `Tỉ lệ đúng: ${pct}% — `;
+  if (pct === 100) msg += '🎉 Hoàn hảo! Xuất sắc!';
+  else if (pct >= 90) msg += '🌟 Cực kỳ xuất sắc!';
+  else if (pct >= 70) msg += '👍 Tốt! Tiếp tục cố gắng!';
+  else msg += '💪 Cần ôn tập và cố gắng thêm nhé!';
+  
+  document.getElementById('resultMessage').textContent = msg;
+  
+  document.getElementById('statTotal').textContent = questions.length;
+  document.getElementById('statCorrect').textContent = correct;
+  document.getElementById('statWrong').textContent = wrong;
+  
+  const retryWrongBtn = document.getElementById('retryWrongBtn');
+  if (wrong === 0) {
+    retryWrongBtn.classList.add('hidden');
+  } else {
+    retryWrongBtn.classList.remove('hidden');
+  }
+}
+
+function showReviewList() {
+  const section = document.getElementById('reviewSection');
+  section.classList.remove('hidden');
+  
+  let html = `<h3 style="font-size:16px; font-weight:700; margin-bottom:12px; color:var(--text);">Chi tiết câu hỏi</h3>`;
+  const labels = ['A', 'B', 'C', 'D'];
+  
+  questions.forEach((q, idx) => {
+    const ua = answers[q.id];
+    const isCorrect = ua === q.answer;
+    
+    html += `
+      <div class="review-item">
+        <div class="review-header">
+          <span style="font-weight: 700; color: var(--text);">Câu ${q.id}</span>
+          <span class="review-status-tag ${isCorrect ? 'correct' : 'wrong'}">
+            ${isCorrect ? '✓ Đúng' : '✗ Sai'}
+          </span>
+        </div>
+        <div class="q-text" style="font-size: 15px; font-weight:500;">
+          ${q.text.replace(/_____|-------+/g, '<u><strong>' + q.options[q.answer] + '</strong></u>')}
+        </div>
+        <div class="review-ans-box">
+          ${ua !== undefined ? `Bạn chọn: <span style="font-weight: 600; color: ${isCorrect ? 'var(--correct-text)' : 'var(--wrong-text)'}">(${labels[ua]}) ${q.options[ua]}</span><br>` : ''}
+          Đáp án đúng: <span style="font-weight: 600; color: var(--correct-text)">(${labels[q.answer]}) ${q.options[q.answer]}</span>
+        </div>
+        ${q.explain ? `<div class="explain-box show" style="margin-top: 4px; padding: 10px 12px; font-size: 13px;">💡 ${q.explain}</div>` : ''}
+      </div>
+    `;
+  });
+  
+  section.innerHTML = html;
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  
+  const pageMap = {
+    'Practice1.html': 'menu_p1',
+    'Practice2.html': 'menu_p2',
+    'Practice3.html': 'menu_p3',
+    'Practice4.html': 'menu_p4',
+    'Pratice5.html': 'menu_p5'
+  };
+  const filename = window.location.pathname.split('/').pop();
+  const activeMenuId = pageMap[filename] || 'menu_p2';
+  const activeItem = document.getElementById(activeMenuId);
+  if (activeItem) activeItem.classList.add('active');
+  
+  const titleMap = {
+    'menu_p1': 'TOEIC Practice 1',
+    'menu_p2': 'TOEIC Practice 2',
+    'menu_p3': 'TOEIC Practice 3',
+    'menu_p4': 'TOEIC Practice 4',
+    'menu_p5': 'TOEIC Practice 5'
+  };
+  const headerTitle = document.getElementById('headerTitle');
+  if (headerTitle) headerTitle.textContent = titleMap[activeMenuId];
+  
+  initQuiz(originalQuestions);
+});
+</script>
+</body>
+</html>
