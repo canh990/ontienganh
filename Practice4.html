@@ -997,7 +997,7 @@ function updateDotsState() {
       cls += ' active';
     }
     
-    if (submitted) {
+    if (submitted || ua !== undefined) {
       if (ua === q.answer) cls += ' correct';
       else if (ua !== undefined) cls += ' wrong';
     } else {
@@ -1024,7 +1024,7 @@ function renderQuestion() {
   
   const statusBadge = document.getElementById('statusBadge');
   statusBadge.className = 'status-badge';
-  if (submitted) {
+  if (submitted || ua !== undefined) {
     if (isCorrect) {
       statusBadge.textContent = '✓ Chính xác';
       statusBadge.classList.add('correct');
@@ -1047,7 +1047,8 @@ function renderQuestion() {
     const div = document.createElement('div');
     let cls = 'option-item';
     
-    const revealed = submitted;
+    const isAnswered = ua !== undefined;
+    const revealed = submitted || isAnswered;
     
     if (revealed) {
       cls += ' disabled';
@@ -1070,7 +1071,7 @@ function renderQuestion() {
   });
   
   const expBox = document.getElementById('explainBox');
-  const showExp = submitted;
+  const showExp = submitted || ua !== undefined;
   if (showExp && q.explain) {
     expBox.innerHTML = `💡 <strong>Giải thích:</strong> ${q.explain}`;
     expBox.classList.add('show');
@@ -1098,17 +1099,19 @@ function selectOption(idx) {
   renderQuestion();
   updateProgress();
   
-  setTimeout(() => {
-    if (current < questions.length - 1) {
-      current++;
-      renderQuestion();
-    } else {
-      const allAnswered = questions.every(x => answers[x.id] !== undefined);
-      if (allAnswered) {
-        showResult();
+  if (idx === q.answer) {
+    setTimeout(() => {
+      if (current < questions.length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        const allAnswered = questions.every(x => answers[x.id] !== undefined);
+        if (allAnswered) {
+          showResult();
+        }
       }
-    }
-  }, 600);
+    }, 900);
+  }
 }
 
 function navigate(dir) {
@@ -1121,12 +1124,8 @@ function updateProgress() {
   const pct = questions.length > 0 ? (answeredCount / questions.length * 100) : 0;
   document.getElementById('progressFill').style.width = pct + '%';
   
-  if (submitted) {
-    const correctCount = questions.filter(q => answers[q.id] === q.answer).length;
-    document.getElementById('scoreBadge').textContent = `${correctCount} / ${questions.length}`;
-  } else {
-    document.getElementById('scoreBadge').textContent = `${answeredCount} / ${questions.length}`;
-  }
+  const correctCount = questions.filter(q => answers[q.id] === q.answer).length;
+  document.getElementById('scoreBadge').textContent = `${correctCount} / ${questions.length}`;
 }
 
 function showResult() {
