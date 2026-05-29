@@ -1278,20 +1278,6 @@ function selectOption(idx) {
   answers[q.id] = idx;
   renderQuestion();
   updateProgress();
-  
-  if (idx === q.answer) {
-    setTimeout(() => {
-      if (current < questions.length - 1) {
-        current++;
-        renderQuestion();
-      } else {
-        const allAnswered = questions.every(x => answers[x.id] !== undefined);
-        if (allAnswered) {
-          showResult();
-        }
-      }
-    }, 900);
-  }
 }
 
 function navigate(dir) {
